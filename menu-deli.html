@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>Café, Deli Counter &amp; Hampers | Borrelli Delicatessen, Yarm (Concept Demo)</title>
-  <meta name="description" content="Daytime Italian café panini, coffee, antipasti, salumeria counter cheeses and cured meats, plus bespoke gift hampers at Borrelli Delicatessen, 3 Danby Wynd, Yarm.">
+  <meta name="description" content="Daytime Italian café panini, coffee, antipasti, salumeria counter cheeses and cured meats, plus custom sharing boards and gift hampers at Borrelli Delicatessen, 3 Danby Wynd, Yarm.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -16,13 +16,18 @@
     <p>Concept design by Mark Aszkenasy – not the official website of Borrelli Delicatessen.</p>
   </div>
 
-  <header class="site-header">
-    <div class="container site-header__inner">
+  <header class="shopfront-header">
+    <div class="shopfront-awning" aria-hidden="true">
+      <div class="shopfront-awning__slope"></div>
+      <div class="shopfront-awning__valance"></div>
+    </div>
+
+    <div class="container shopfront-fascia">
       <a class="shop-brand" href="index.html">
-        <img class="shop-brand__seal" src="images/logo-mark.svg" width="76" height="76" alt="Borrelli Delicatessen crest">
+        <img class="shop-brand__seal" src="images/logo-mark.svg" width="76" height="76" alt="Borrelli Delicatessen octagonal stamp">
         <span class="shop-brand__copy">
           <span class="shop-brand__title">Borrelli Delicatessen</span>
-          <span class="shop-brand__wynd">3 Danby Wynd · Off Yarm High Street</span>
+          <span class="shop-brand__wynd">3 Danby Wynd, Yarm</span>
         </span>
       </a>
 
@@ -36,30 +41,31 @@
       <nav class="site-nav" id="primary-nav" data-site-nav aria-label="Primary navigation">
         <ul class="site-nav__list">
           <li><a class="site-nav__link" href="index.html">Salumeria</a></li>
-          <li><a class="site-nav__link" href="menu-deli.html" aria-current="page">Café, Counter &amp; Hampers</a></li>
-          <li><a class="site-nav__link" href="orders-bookings.html">Friday Bookings &amp; Pre-Orders</a></li>
-          <li><a class="site-nav__link" href="index.html#danby-wynd">Find Us</a></li>
+          <li><a class="site-nav__link" href="menu-deli.html" aria-current="page">Café &amp; Hampers</a></li>
+          <li><a class="site-nav__link" href="orders-bookings.html">Friday &amp; Pre-Orders</a></li>
+          <li><a class="site-nav__link" href="index.html#danby-wynd">Danby Wynd</a></li>
         </ul>
-        <a class="site-nav__cta" href="orders-bookings.html#antipasto-booking">Friday Antipasto Night</a>
+        <a class="call-badge" href="tel:01642791888" aria-label="Call Borrelli Delicatessen on 01642 791888">
+          <span aria-hidden="true">☎</span> 01642 791888
+        </a>
       </nav>
     </div>
-    <div class="salumeria-trim" aria-hidden="true"></div>
   </header>
 
   <main id="main-content">
     <section class="subpage-banner" aria-labelledby="menu-deli-heading">
       <div class="container">
-        <span class="wynd-stamp">3 Danby Wynd · Yarm</span>
-        <h1 id="menu-deli-heading">Café Menu, Deli Counter &amp; Hampers</h1>
+        <span class="wynd-stamp">3 Danby Wynd · Off Yarm High Street</span>
+        <h1 id="menu-deli-heading">Café Menu, Salumeria Counter &amp; Hampers</h1>
         <p>
-          Explore our daytime Italian café menu framework alongside our salumeria counter selection and made-to-order wicker gift hampers.
+          Explore our daytime Italian café menu framework alongside sliced-to-order salumi and cheeses, pantry shelves, and our interactive platter &amp; hamper counter builder.
         </p>
       </div>
     </section>
 
     <section class="section" aria-label="Café, salumeria counter and hampers">
       <div class="container">
-        <!-- Accessible Pill Tablist -->
+        <!-- Accessible Stamped Pill Tablist -->
         <div class="pill-tablist" role="tablist" aria-label="Browse Borrelli sections">
           <button
             class="pill-tab"
@@ -102,7 +108,7 @@
         <div class="tab-panel" id="panel-cafe" role="tabpanel" aria-labelledby="tab-cafe">
           <div class="deli-menu-grid deli-menu-grid--two">
             <article class="deli-card deli-card--framed">
-              <h2 style="font-size: 1.5rem; color: var(--terracotta);">Freshly Pressed Panini &amp; Focaccia</h2>
+              <h2 style="font-size: 1.5rem; color: var(--terracotta-deep);">Freshly Pressed Panini &amp; Focaccia</h2>
               <p style="color: var(--walnut-muted); font-size: 0.92rem; margin-top: 0;">
                 Prepared to order using cured meats, cheeses and antipasti straight from the counter.
               </p>
@@ -167,7 +173,7 @@
         <div class="tab-panel" id="panel-counter" role="tabpanel" aria-labelledby="tab-counter" hidden>
           <div class="deli-menu-grid deli-menu-grid--two">
             <article class="deli-card deli-card--framed">
-              <h2 style="font-size: 1.5rem; color: var(--terracotta);">Salumi &amp; Artisanal Cheeses</h2>
+              <h2 style="font-size: 1.5rem; color: var(--terracotta-deep);">Salumi &amp; Artisanal Cheeses</h2>
               <p style="color: var(--walnut-muted); font-size: 0.92rem; margin-top: 0;">
                 Sliced fresh to order by weight for home cooking, grazing boards, or weekend entertaining.
               </p>
@@ -256,7 +262,7 @@
               </ul>
 
               <div class="btn-row">
-                <a class="btn btn--terracotta" href="orders-bookings.html#hamper-preorder">Pre-Order for Collection</a>
+                <a class="btn btn--terracotta" href="#deli-customiser">Customise Below ↓</a>
                 <a class="btn btn--cream-outline" href="tel:01642791888">Discuss by Phone</a>
               </div>
             </div>
@@ -270,9 +276,172 @@
               >
               <figcaption>
                 <span>Bespoke wicker gift hamper presentation</span>
-                <span>Illustrative image · Concept photography</span>
+                <span>Illustrative image</span>
               </figcaption>
             </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Platter & Hamper Customiser also featured on menu-deli.html -->
+    <section class="section section--kraft" id="deli-customiser" aria-labelledby="menu-builder-heading">
+      <div class="container">
+        <div class="counter-builder" data-counter-builder>
+          <div class="counter-builder__header">
+            <div>
+              <span class="wynd-stamp">Custom Counter Selection</span>
+              <h2 id="menu-builder-heading" style="margin-bottom: 0.25rem;">Build Your Custom Sharing Board or Gift Hamper</h2>
+              <p style="margin: 0; color: var(--walnut-muted); max-width: 60ch;">
+                Tick the counter favourites you would like included and send them straight to our Danby Wynd pre-order form.
+              </p>
+            </div>
+            <span class="ph">[Sizes &amp; prices – owner to confirm]</span>
+          </div>
+
+          <div>
+            <span class="counter-step-label">Step 1 · Choose Presentation Format</span>
+            <div class="builder-formats">
+              <div class="builder-choice">
+                <input
+                  type="radio"
+                  id="deli-fmt-board"
+                  name="deli_counter_format"
+                  value="Sharing Antipasto Board"
+                  data-builder-format
+                >
+                <label for="deli-fmt-board">
+                  <span class="builder-choice__indicator" aria-hidden="true"></span>
+                  <span>
+                    <span class="builder-choice__title">Sharing Antipasto Board</span>
+                    <span class="builder-choice__sub">Chilled grazing board sliced to order from the counter</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="builder-choice">
+                <input
+                  type="radio"
+                  id="deli-fmt-hamper"
+                  name="deli_counter_format"
+                  value="Bespoke Gift Hamper"
+                  data-builder-format
+                  checked
+                >
+                <label for="deli-fmt-hamper">
+                  <span class="builder-choice__indicator" aria-hidden="true"></span>
+                  <span>
+                    <span class="builder-choice__title">Bespoke Gift / Seasonal Hamper</span>
+                    <span class="builder-choice__sub">Hand-packed wicker gift hamper for celebrations &amp; seasonal gifting</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <span class="counter-step-label">Step 2 · Tick Counter Favourites to Include</span>
+            <div class="builder-items-grid">
+              <div class="builder-tick">
+                <input
+                  type="checkbox"
+                  id="deli-item-salumi"
+                  value="Cured Italian Salumi"
+                  data-builder-item
+                  checked
+                >
+                <label for="deli-item-salumi">
+                  <span class="builder-tick__box" aria-hidden="true"></span>
+                  <span>
+                    <span class="builder-tick__name">Cured Italian Salumi</span>
+                    <span class="builder-tick__note">Prosciutto, salame &amp; counter charcuterie</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="builder-tick">
+                <input
+                  type="checkbox"
+                  id="deli-item-cheese"
+                  value="Aged Artisan Cheeses"
+                  data-builder-item
+                  checked
+                >
+                <label for="deli-item-cheese">
+                  <span class="builder-tick__box" aria-hidden="true"></span>
+                  <span>
+                    <span class="builder-tick__name">Aged Artisan Cheeses</span>
+                    <span class="builder-tick__note">Regional Italian &amp; continental formaggi</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="builder-tick">
+                <input
+                  type="checkbox"
+                  id="deli-item-olives"
+                  value="Nocellara Olives &amp; Sun-Blushed Antipasti"
+                  data-builder-item
+                  checked
+                >
+                <label for="deli-item-olives">
+                  <span class="builder-tick__box" aria-hidden="true"></span>
+                  <span>
+                    <span class="builder-tick__name">Nocellara Olives &amp; Sun-Blushed Antipasti</span>
+                    <span class="builder-tick__note">Marinated antipasti &amp; counter accompaniments</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="builder-tick">
+                <input
+                  type="checkbox"
+                  id="deli-item-pantry"
+                  value="Artisan Pasta, Oils &amp; Pantry Jars"
+                  data-builder-item
+                  checked
+                >
+                <label for="deli-item-pantry">
+                  <span class="builder-tick__box" aria-hidden="true"></span>
+                  <span>
+                    <span class="builder-tick__name">Artisan Pasta, Oils &amp; Pantry Jars</span>
+                    <span class="builder-tick__note">Bronze-die pasta, extra virgin olive oil &amp; balsamic</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="builder-tick">
+                <input
+                  type="checkbox"
+                  id="deli-item-sweet"
+                  value="Sweet Italian Biscotti &amp; Festive Treats"
+                  data-builder-item
+                >
+                <label for="deli-item-sweet">
+                  <span class="builder-tick__box" aria-hidden="true"></span>
+                  <span>
+                    <span class="builder-tick__name">Sweet Italian Biscotti &amp; Festive Treats</span>
+                    <span class="builder-tick__note">Cantucci, cannoli &amp; seasonal Italian treats</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="builder-summary-bar basil-surface" role="status" aria-live="polite">
+            <div>
+              <p class="builder-summary-bar__eyebrow">Live Counter Slip</p>
+              <p class="builder-summary-bar__status" data-builder-status>
+                Your Counter Selection: Bespoke Gift Hamper · 4 counter selections
+              </p>
+              <p class="builder-summary-bar__items" data-builder-items-preview>
+                Included: Cured Italian Salumi · Aged Artisan Cheeses · Nocellara Olives &amp; Sun-Blushed Antipasti · Artisan Pasta, Oils &amp; Pantry Jars
+              </p>
+            </div>
+
+            <a class="btn btn--on-basil" href="orders-bookings.html?preorder=1#hamper-preorder" data-send-preorder>
+              Send Selection to Counter Pre-Order →
+            </a>
           </div>
         </div>
 

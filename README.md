@@ -2,15 +2,15 @@
 
 Unsolicited static concept website created by **Mark Aszkenasy** for **Borrelli Delicatessen** (`3 Danby Wynd, Yarm TS15 9SF`).
 
-## Structure
+## Design Archetype: Scalloped Italian Shopfront Awning, Butcher-Paper Salumeria & Perforated Friday Counter Ticket
 
-- `index.html` — Classic Danby Wynd salumeria homepage featuring the antipasto platter hero, weekly **Friday "Piatto Di Antipasto Night"** spotlight ticket, deli counter & wicker gift hamper showcase, and Danby Wynd directions.
-- `menu-deli.html` — Accessible 3-tab showcase (`Daytime Café & Panini`, `Italian Deli Counter & Pantry`, `Seasonal Hampers & Sharing Boards`) with clear `.ph` owner placeholders.
-- `orders-bookings.html` — Interactive dual form switcher: (1) **Book Friday "Piatto Di Antipasto Night"** (with 1-tap upcoming Friday quick-select chips) and (2) **Pre-Order Sharing Platters & Gift Hampers** for collection at 3 Danby Wynd.
-- `css/styles.css` — Self-hosted typography (`Lora` + `Karla`), WCAG AA contrast palette (`#FCF8F0`, `#99361F`, `#274732`, `#231C18`), butcher-paper pinstripe salumeria detailing, double-ruled deli cards, and solid opaque sticky mobile action bar.
-- `js/main.js` — Accessible mobile navigation (`Escape` closes), ARIA tablist keyboard controls, URL hash deep-linking, upcoming Friday chip generator, and client-side form validation.
+- `index.html` — Authentic striped & scalloped Italian shopfront canopy awning header, asymmetric 3-layer artisanal butcher-paper & wax-sealed antipasto collage, overlapping perforated paper counter ticket (`FRI-03-DW`) for weekly **Friday "Piatto Di Antipasto Night"**, interactive **"Build Your Custom Sharing Board or Gift Hamper"** Counter Selector, and Danby Wynd directions.
+- `menu-deli.html` — Accessible 3-tab showcase (`Daytime Café & Panini`, `Italian Deli Counter & Pantry`, `Seasonal Hampers & Sharing Boards`) plus the interactive Platter & Hamper Counter Customiser and `.ph` owner placeholders.
+- `orders-bookings.html` — Interactive dual form switcher: (1) **Book Friday "Piatto Di Antipasto Night"** (with 1-tap upcoming Friday quick-select chips) and (2) **Pre-Order Sharing Platters & Gift Hampers** (automatically pre-populated from the Counter Customiser via `localStorage` and query params).
+- `css/styles.css` — Self-hosted typography (`Lora` + `Karla`), WCAG AA+ contrast palette (`#FBF6EC`, `#9B341C`, `#DCE6D5`, `#1F3D2B`, `#8A1C1C`), CSS radial-gradient punched ticket notches, stitched butcher-paper borders, and solid opaque sticky mobile action bar.
+- `js/main.js` — Interactive Counter Customiser with live pre-order sync, accessible mobile navigation, ARIA tablist keyboard controls, upcoming Friday chip generator, and client-side form validation.
 - `favicon.svg` & `images/logo-mark.svg` — Custom octagonal Tuscan salumeria seal & serif `B` monogram SVGs.
-- `PITCH.md` — Walk-in pitch playbook covering `borrellis.co.uk` → `survey-keys.com` spam redirect, `borrellideli.co.uk` availability (Nominet), 20-sec opener, 3-tap demo, and owner placeholder checklist.
+- `PITCH.md` — Walk-in pitch playbook, domain audit, 3-tap demo, and owner placeholder checklist.
 
 ## Local Preview
 

@@ -1,10 +1,12 @@
 /* ==========================================================================
-   Borrelli Delicatessen — Interactive UI & Accessible Demo Forms
-   Zero external network calls.
+   Borrelli Delicatessen — Interactive Counter Customiser, Tabs & Demo Forms
+   Zero external network calls · Salumeria Platter & Hamper Pre-Order Sync
    ========================================================================== */
 
 (function () {
   'use strict';
+
+  var STORAGE_KEY = 'borrelli_counter_selection';
 
   /* 1. Keyboard-Accessible Mobile Navigation */
   var navToggle = document.querySelector('[data-nav-toggle]');
@@ -40,6 +42,12 @@
       ) {
         closeNav(false);
       }
+    });
+
+    siteNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        closeNav(false);
+      });
     });
   }
 
@@ -92,23 +100,207 @@
       });
     });
 
-    function syncFromHash() {
+    function syncFromUrl() {
       var hash = window.location.hash ? window.location.hash.slice(1) : '';
-      if (!hash) return;
+      var isPreorderQuery = false;
+      try {
+        var sp = new URLSearchParams(window.location.search);
+        isPreorderQuery = sp.get('preorder') === '1';
+      } catch (err) {
+        /* ignore */
+      }
+
       tabs.forEach(function (tab) {
         var panelId = tab.getAttribute('aria-controls');
         var dataHash = tab.getAttribute('data-hash');
-        if (hash === panelId || hash === dataHash || hash === tab.id) {
+        if (
+          hash === panelId ||
+          hash === dataHash ||
+          hash === tab.id ||
+          (isPreorderQuery && panelId === 'panel-preorder')
+        ) {
           activateTab(tab, false);
         }
       });
     }
 
-    syncFromHash();
-    window.addEventListener('hashchange', syncFromHash);
+    syncFromUrl();
+    window.addEventListener('hashchange', syncFromUrl);
   });
 
-  /* 3. Date Inputs & Upcoming Friday Helper Chips */
+  /* 3. Interactive "Build Your Custom Sharing Board or Gift Hamper" Counter Selector */
+  var builders = document.querySelectorAll('[data-counter-builder]');
+
+  function loadSavedSelection() {
+    try {
+      var raw = window.localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (parsed && typeof parsed === 'object') return parsed;
+      }
+    } catch (err) {
+      /* ignore */
+    }
+    return null;
+  }
+
+  function saveSelection(data) {
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } catch (err) {
+      /* ignore */
+    }
+  }
+
+  builders.forEach(function (builder) {
+    var formatRadios = Array.prototype.slice.call(
+      builder.querySelectorAll('input[type="radio"][data-builder-format]')
+    );
+    var itemChecks = Array.prototype.slice.call(
+      builder.querySelectorAll('input[type="checkbox"][data-builder-item]')
+    );
+    var statusText = builder.querySelector('[data-builder-status]');
+    var itemsText = builder.querySelector('[data-builder-items-preview]');
+    var sendLink = builder.querySelector('[data-send-preorder]');
+
+    /* Restore prior selection if present */
+    var existing = loadSavedSelection();
+    if (existing && existing.format && Array.isArray(existing.items)) {
+      formatRadios.forEach(function (r) {
+        r.checked = r.value === existing.format;
+      });
+      itemChecks.forEach(function (c) {
+        c.checked = existing.items.indexOf(c.value) !== -1;
+      });
+    }
+
+    function computeState() {
+      var chosenFormat = 'Sharing Antipasto Board';
+      formatRadios.forEach(function (r) {
+        if (r.checked) chosenFormat = r.value;
+      });
+
+      var chosenItems = [];
+      itemChecks.forEach(function (c) {
+        if (c.checked) chosenItems.push(c.value);
+      });
+
+      var count = chosenItems.length;
+      var noun = count === 1 ? '1 counter selection' : count + ' counter selections';
+
+      if (statusText) {
+        statusText.textContent = 'Your Counter Selection: ' + chosenFormat + ' · ' + noun;
+      }
+
+      if (itemsText) {
+        itemsText.textContent = count > 0
+          ? 'Included: ' + chosenItems.join(' · ')
+          : 'Tick one or more counter favourites above to pre-fill your pre-order notes.';
+      }
+
+      if (sendLink) {
+        var qs = new URLSearchParams();
+        qs.set('preorder', '1');
+        qs.set('format', chosenFormat);
+        if (count > 0) {
+          qs.set('items', chosenItems.join(', '));
+        }
+        sendLink.setAttribute('href', 'orders-bookings.html?' + qs.toString() + '#hamper-preorder');
+      }
+
+      return { format: chosenFormat, items: chosenItems };
+    }
+
+    computeState();
+
+    formatRadios.forEach(function (r) {
+      r.addEventListener('change', function () {
+        saveSelection(computeState());
+      });
+    });
+
+    itemChecks.forEach(function (c) {
+      c.addEventListener('change', function () {
+        saveSelection(computeState());
+      });
+    });
+
+    if (sendLink) {
+      sendLink.addEventListener('click', function () {
+        saveSelection(computeState());
+      });
+    }
+  });
+
+  /* 4. Pre-Populate Counter Pre-Order Form on orders-bookings.html */
+  var ordTier = document.getElementById('ord-tier');
+  var ordNotes = document.getElementById('ord-notes');
+  var prefillBanner = document.querySelector('[data-prefill-banner]');
+  var prefillText = document.querySelector('[data-prefill-text]');
+  var clearPrefillBtn = document.querySelector('[data-clear-prefill]');
+
+  if (ordTier && ordNotes) {
+    var payload = null;
+
+    try {
+      var q = new URLSearchParams(window.location.search);
+      if (q.get('format') || q.get('items')) {
+        payload = {
+          format: q.get('format') || 'Sharing Antipasto Board',
+          items: q.get('items') ? q.get('items').split(', ').filter(Boolean) : []
+        };
+      }
+    } catch (err) {
+      /* ignore */
+    }
+
+    if (!payload) {
+      payload = loadSavedSelection();
+    }
+
+    if (payload && (payload.format || (payload.items && payload.items.length))) {
+      var isHamper = /hamper/i.test(payload.format || '');
+      if (!ordTier.value) {
+        ordTier.value = isHamper ? 'Classic Gift Hamper' : 'Sharing Platter (Entertaining)';
+      }
+
+      if (!ordNotes.value.trim()) {
+        var itemLine = payload.items && payload.items.length
+          ? 'Requested counter items: ' + payload.items.join(', ') + '.'
+          : 'No specific counter items ticked yet.';
+        ordNotes.value =
+          'Counter Customiser (' + (payload.format || 'Custom Selection') + ') — ' +
+          itemLine + ' ';
+      }
+
+      if (prefillBanner && prefillText) {
+        var countLabel = payload.items ? payload.items.length : 0;
+        prefillText.textContent =
+          '✓ Loaded your Counter Customiser selection: ' +
+          (payload.format || 'Custom Selection') +
+          ' (' + countLabel + (countLabel === 1 ? ' item' : ' items') + ' pre-filled below).';
+        prefillBanner.hidden = false;
+      }
+    }
+
+    if (clearPrefillBtn) {
+      clearPrefillBtn.addEventListener('click', function () {
+        try {
+          window.localStorage.removeItem(STORAGE_KEY);
+        } catch (err) {
+          /* ignore */
+        }
+        ordTier.value = '';
+        ordNotes.value = '';
+        if (prefillBanner) {
+          prefillBanner.hidden = true;
+        }
+        ordTier.focus();
+      });
+    }
+  }
+
+  /* 5. Date Inputs & Upcoming Friday Helper Chips */
   var now = new Date();
   var todayIso = now.toISOString().split('T')[0];
 
@@ -151,7 +343,7 @@
     }
   }
 
-  /* 4. Accessible Client-Side Form Validation & Exact Demo Status Message */
+  /* 6. Accessible Client-Side Form Validation & Exact Demo Status Message */
   var demoForms = document.querySelectorAll('[data-demo-form]');
 
   function validateField(field) {

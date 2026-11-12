@@ -16,13 +16,18 @@
     <p>Concept design by Mark Aszkenasy – not the official website of Borrelli Delicatessen.</p>
   </div>
 
-  <header class="site-header">
-    <div class="container site-header__inner">
+  <header class="shopfront-header">
+    <div class="shopfront-awning" aria-hidden="true">
+      <div class="shopfront-awning__slope"></div>
+      <div class="shopfront-awning__valance"></div>
+    </div>
+
+    <div class="container shopfront-fascia">
       <a class="shop-brand" href="index.html">
-        <img class="shop-brand__seal" src="images/logo-mark.svg" width="76" height="76" alt="Borrelli Delicatessen crest">
+        <img class="shop-brand__seal" src="images/logo-mark.svg" width="76" height="76" alt="Borrelli Delicatessen octagonal stamp">
         <span class="shop-brand__copy">
           <span class="shop-brand__title">Borrelli Delicatessen</span>
-          <span class="shop-brand__wynd">3 Danby Wynd · Off Yarm High Street</span>
+          <span class="shop-brand__wynd">3 Danby Wynd, Yarm</span>
         </span>
       </a>
 
@@ -36,23 +41,24 @@
       <nav class="site-nav" id="primary-nav" data-site-nav aria-label="Primary navigation">
         <ul class="site-nav__list">
           <li><a class="site-nav__link" href="index.html">Salumeria</a></li>
-          <li><a class="site-nav__link" href="menu-deli.html">Café, Counter &amp; Hampers</a></li>
-          <li><a class="site-nav__link" href="orders-bookings.html" aria-current="page">Friday Bookings &amp; Pre-Orders</a></li>
-          <li><a class="site-nav__link" href="index.html#danby-wynd">Find Us</a></li>
+          <li><a class="site-nav__link" href="menu-deli.html">Café &amp; Hampers</a></li>
+          <li><a class="site-nav__link" href="orders-bookings.html" aria-current="page">Friday &amp; Pre-Orders</a></li>
+          <li><a class="site-nav__link" href="index.html#danby-wynd">Danby Wynd</a></li>
         </ul>
-        <a class="site-nav__cta" href="orders-bookings.html#antipasto-booking">Friday Antipasto Night</a>
+        <a class="call-badge" href="tel:01642791888" aria-label="Call Borrelli Delicatessen on 01642 791888">
+          <span aria-hidden="true">☎</span> 01642 791888
+        </a>
       </nav>
     </div>
-    <div class="salumeria-trim" aria-hidden="true"></div>
   </header>
 
   <main id="main-content">
     <section class="subpage-banner" aria-labelledby="bookings-orders-heading">
       <div class="container">
-        <span class="wynd-stamp">3 Danby Wynd · Yarm TS15 9SF</span>
-        <h1 id="bookings-orders-heading">Friday Bookings &amp; Counter Pre-Orders</h1>
+        <span class="wynd-stamp">Counter Ticket &amp; Pre-Order Desk · 3 Danby Wynd</span>
+        <h1 id="bookings-orders-heading">Friday Table Tickets &amp; Counter Pre-Orders</h1>
         <p>
-          Reserve your table for our weekly Friday <strong>“Piatto Di Antipasto Night”</strong>, or pre-order bespoke sharing platters and Italian gift hampers for collection down Danby Wynd. Prefer to speak with the shop directly? Call <a href="tel:01642791888"><strong>01642 791888</strong></a>.
+          Pull a Friday evening table ticket for our weekly <strong>“Piatto Di Antipasto Night”</strong>, or pre-order bespoke sharing platters and Italian gift hampers for collection down Danby Wynd. Prefer to speak with the shop directly? Call <a href="tel:01642791888"><strong>01642 791888</strong></a>.
         </p>
       </div>
     </section>
@@ -91,7 +97,10 @@
         <!-- PANEL 1: Book Friday "Piatto Di Antipasto Night" -->
         <div class="tab-panel" id="panel-antipasto" role="tabpanel" aria-labelledby="tab-antipasto">
           <div class="deli-card deli-card--framed">
-            <h2 style="margin-bottom: 0.35rem;">Book Friday “Piatto Di Antipasto Night”</h2>
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.5rem; margin-bottom: 0.45rem;">
+              <h2 style="margin: 0;">Book Friday “Piatto Di Antipasto Night”</h2>
+              <span class="perforated-ticket__serial">TICKET · FRI-03-DW</span>
+            </div>
             <p style="color: var(--walnut-muted); margin: 0 0 1.4rem;">
               Held weekly on Friday evenings at 3 Danby Wynd. Exact sitting slots &amp; evening schedule: <span class="ph">[Daytime &amp; Friday Antipasto Night hours – owner to confirm]</span>. Fields marked <span class="req-mark">*</span> are required.
             </p>
@@ -231,6 +240,12 @@
             <p style="color: var(--walnut-muted); margin: 0 0 1.4rem;">
               Order hand-packed Italian gift hampers or chilled antipasto grazing platters for collection at <strong>3 Danby Wynd, Yarm TS15 9SF</strong>. Tier details: <span class="ph">[Sizes &amp; prices – owner to confirm]</span>.
             </p>
+
+            <!-- Auto-populated banner when arriving from the Counter Customiser -->
+            <div class="preorder-prefill-notice" data-prefill-banner hidden>
+              <span data-prefill-text>✓ Loaded your Counter Customiser selection below.</span>
+              <button class="preorder-prefill-clear" type="button" data-clear-prefill>Clear custom selection</button>
+            </div>
 
             <form data-demo-form novalidate>
               <div class="form-grid form-grid--two">

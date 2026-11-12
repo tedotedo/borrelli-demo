@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>Borrelli Delicatessen | 3 Danby Wynd, Yarm (Concept Demo)</title>
-  <meta name="description" content="Concept website for Borrelli Delicatessen — independent Italian delicatessen, café and Friday Piatto Di Antipasto Night at 3 Danby Wynd, off Yarm High Street.">
+  <meta name="description" content="Concept website for Borrelli Delicatessen — independent Italian delicatessen, café, custom sharing platters, gift hampers and Friday Piatto Di Antipasto Night at 3 Danby Wynd, Yarm.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -16,13 +16,19 @@
     <p>Concept design by Mark Aszkenasy – not the official website of Borrelli Delicatessen.</p>
   </div>
 
-  <header class="site-header">
-    <div class="container site-header__inner">
+  <header class="shopfront-header">
+    <!-- Authentic Striped & Scalloped Italian Shopfront Canopy Awning -->
+    <div class="shopfront-awning" aria-hidden="true">
+      <div class="shopfront-awning__slope"></div>
+      <div class="shopfront-awning__valance"></div>
+    </div>
+
+    <div class="container shopfront-fascia">
       <a class="shop-brand" href="index.html">
-        <img class="shop-brand__seal" src="images/logo-mark.svg" width="76" height="76" alt="Borrelli Delicatessen crest">
+        <img class="shop-brand__seal" src="images/logo-mark.svg" width="76" height="76" alt="Borrelli Delicatessen octagonal stamp">
         <span class="shop-brand__copy">
           <span class="shop-brand__title">Borrelli Delicatessen</span>
-          <span class="shop-brand__wynd">3 Danby Wynd · Off Yarm High Street</span>
+          <span class="shop-brand__wynd">3 Danby Wynd, Yarm</span>
         </span>
       </a>
 
@@ -36,109 +42,296 @@
       <nav class="site-nav" id="primary-nav" data-site-nav aria-label="Primary navigation">
         <ul class="site-nav__list">
           <li><a class="site-nav__link" href="index.html" aria-current="page">Salumeria</a></li>
-          <li><a class="site-nav__link" href="menu-deli.html">Café, Counter &amp; Hampers</a></li>
-          <li><a class="site-nav__link" href="orders-bookings.html">Friday Bookings &amp; Pre-Orders</a></li>
-          <li><a class="site-nav__link" href="#danby-wynd">Find Us</a></li>
+          <li><a class="site-nav__link" href="menu-deli.html">Café &amp; Hampers</a></li>
+          <li><a class="site-nav__link" href="orders-bookings.html">Friday &amp; Pre-Orders</a></li>
+          <li><a class="site-nav__link" href="#danby-wynd">Danby Wynd</a></li>
         </ul>
-        <a class="site-nav__cta" href="orders-bookings.html#antipasto-booking">Friday Antipasto Night</a>
+        <a class="call-badge" href="tel:01642791888" aria-label="Call Borrelli Delicatessen on 01642 791888">
+          <span aria-hidden="true">☎</span> 01642 791888
+        </a>
       </nav>
     </div>
-    <div class="salumeria-trim" aria-hidden="true"></div>
   </header>
 
   <main id="main-content">
-    <!-- Hero: Inviting Danby Wynd Salumeria -->
-    <section class="salumeria-hero" aria-labelledby="hero-heading">
-      <div class="container">
-        <div class="salumeria-hero__intro">
-          <span class="wynd-stamp">Independent Italian Delicatessen &amp; Café · Yarm</span>
-          <h1 id="hero-heading">Authentic Italian Counter Craft, Tucked Down Historic Danby Wynd.</h1>
-          <p>
-            Steps off Yarm High Street along cobbled Danby Wynd, Borrelli Delicatessen pairs an independent daytime Italian café and fine salumeria counter with our weekly Friday evening <span class="serif-italic">Piatto Di Antipasto Night</span>.
+    <!-- Hero: Asymmetric 3-Layer Artisanal Collage + Perforated Friday Counter Ticket -->
+    <section class="salumeria-collage-hero" aria-labelledby="hero-heading">
+      <div class="container collage-grid">
+        <!-- LEFT (~46%): Butcher-Paper Typographic Poster -->
+        <div class="butcher-poster">
+          <span class="wynd-stamp">Cobbled Wynd off Yarm High Street · TS15 9SF</span>
+          <h1 id="hero-heading">Fine Italian Counter Craft Down Cobbled Danby Wynd</h1>
+          <p class="butcher-poster__lead">
+            Tucked along historic Danby Wynd just steps off Yarm High Street, Borrelli Delicatessen is an independent daytime Italian café and fine salumeria counter — welcoming guests back every Friday evening for <span class="serif-italic">Piatto Di Antipasto Night</span>.
           </p>
+
+          <ul class="specialty-tags" aria-label="Delicatessen counter specialties">
+            <li>Artisan Salumi</li>
+            <li>Formaggi</li>
+            <li>Fresh Panini</li>
+            <li>Gift Hampers</li>
+          </ul>
+
           <div class="btn-row">
-            <a class="btn btn--terracotta" href="orders-bookings.html#antipasto-booking">Book Friday Antipasto Night</a>
-            <a class="btn btn--cream-outline" href="menu-deli.html">Explore Café, Counter &amp; Hampers</a>
+            <a class="btn btn--terracotta" href="orders-bookings.html#antipasto-booking">Pull a Friday Table Ticket →</a>
+            <a class="btn btn--cream-outline" href="#counter-customiser">Build a Board or Hamper</a>
           </div>
         </div>
 
-        <figure class="salumeria-frame">
-          <img
-            src="images/hero.jpg"
-            width="1440"
-            height="803"
-            alt="Generous Italian Piatto di Antipasto platter with cured salumi, artisanal cheeses, olives and rustic bread"
-          >
-          <figcaption>
-            <span>Piatto di Antipasto sharing board mood</span>
-            <span>Illustrative image · Concept photography</span>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
+        <!-- CENTER/RIGHT (~54%): Framed Antipasto Board + SVG Red Wax Seal + Perforated Ticket -->
+        <div class="tactile-stage">
+          <div class="salumeria-board-wrap">
+            <!-- Inline SVG Crimson Red Wax Seal -->
+            <svg class="wax-seal-badge" viewBox="0 0 110 110" role="img" aria-label="Danby Wynd Salumeria wax seal">
+              <defs>
+                <path id="waxTextArcTop" d="M 19,55 A 36,36 0 1,1 91,55" />
+                <path id="waxTextArcBot" d="M 91,55 A 36,36 0 1,1 19,55" />
+              </defs>
+              <!-- Organic scalloped wax outer rim -->
+              <path d="M55,4 C63,4 68,9 75,9 C82,9 89,14 93,20 C97,26 98,34 102,41 C106,48 106,56 103,64 C100,72 98,80 92,86 C86,92 79,95 72,99 C65,103 57,106 49,104 C41,102 33,101 26,96 C19,91 14,85 10,78 C6,71 4,63 5,55 C6,47 7,38 11,31 C15,24 21,17 28,13 C35,9 43,4 55,4 Z" fill="#8A1C1C"/>
+              <circle cx="55" cy="55" r="41" fill="#781515" stroke="#FBF6EC" stroke-width="1.2" stroke-opacity="0.75"/>
+              <circle cx="55" cy="55" r="26" fill="none" stroke="#FBF6EC" stroke-width="1" stroke-dasharray="2.5 2.5"/>
+              <text fill="#FBF6EC" font-family="Karla, sans-serif" font-size="7.6" font-weight="700" letter-spacing="1.7">
+                <textPath href="#waxTextArcTop" startOffset="50%" text-anchor="middle">DANBY WYND · YARM</textPath>
+              </text>
+              <text fill="#FBF6EC" font-family="Karla, sans-serif" font-size="7.5" font-weight="700" letter-spacing="1.9">
+                <textPath href="#waxTextArcBot" startOffset="50%" text-anchor="middle">SALUMERIA</textPath>
+              </text>
+              <text x="55" y="61" text-anchor="middle" fill="#FBF6EC" font-family="Lora, Georgia, serif" font-size="22" font-weight="700">B</text>
+            </svg>
 
-    <!-- Signature Spotlight: Weekly Friday "Piatto Di Antipasto Night" -->
-    <section class="section" aria-labelledby="friday-heading">
-      <div class="container">
-        <div class="antipasto-spotlight basil-surface">
-          <div class="antipasto-spotlight__grid">
+            <figure class="salumeria-frame">
+              <img
+                src="images/hero.jpg"
+                width="1440"
+                height="803"
+                alt="Generous Italian Piatto di Antipasto sharing platter with cured salumi, artisanal cheeses, olives and rustic bread"
+              >
+              <figcaption>
+                <span>Candlelit Piatto di Antipasto sharing board</span>
+                <span>Illustrative image</span>
+              </figcaption>
+            </figure>
+          </div>
+
+          <!-- Overlapping Perforated Paper Counter Ticket -->
+          <div class="perforated-ticket" role="region" aria-label="Weekly Friday Piatto Di Antipasto Night counter ticket">
             <div>
-              <span class="wynd-stamp">Weekly Signature Gathering · Every Friday</span>
-              <h2 id="friday-heading">Friday “Piatto Di Antipasto Night”</h2>
-              <p style="color: #EFE8DA; margin: 0 0 1rem; max-width: 58ch;">
-                Featured on <span class="serif-italic">This Is Yarm What's On</span>, Friday evenings at 3 Danby Wynd bring an intimate Italian grazing experience to the heart of Yarm — generous antipasto platters prepared fresh from our delicatessen counter.
-              </p>
-              <p style="margin: 0; font-size: 0.94rem; color: #E4DCCB;">
-                Sitting times &amp; platter details: <span class="ph">[Friday Antipasto Night sitting times &amp; price per head/platter – owner to confirm]</span>
+              <div class="perforated-ticket__top">
+                <span class="perforated-ticket__kicker">Every Friday Evening</span>
+                <span class="perforated-ticket__serial">SERIAL · FRI-03-DW</span>
+              </div>
+              <h2 class="perforated-ticket__title">“Piatto Di Antipasto Night”</h2>
+              <p class="perforated-ticket__desc">
+                Cured meats, Italian cheeses, marinated antipasti &amp; wine down Danby Wynd · <span class="ph">[Sitting times &amp; price – owner to confirm]</span>
               </p>
             </div>
 
-            <div class="antipasto-ticket">
-              <p class="antipasto-ticket__day">Every Friday Evening</p>
-              <h3 style="color: #FFFFFF; margin-bottom: 0.45rem;">3 Danby Wynd, Yarm</h3>
-              <p class="antipasto-ticket__detail">
-                Tables down the wynd are cosy — advance reservation recommended.
-              </p>
-              <a class="btn btn--on-basil" style="width: 100%;" href="orders-bookings.html#antipasto-booking">
-                Reserve Your Friday Table
-              </a>
+            <div class="perforated-ticket__stub">
+              <a class="ticket-cta" href="orders-bookings.html#antipasto-booking">Pull a Friday Table Ticket →</a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Deli Counter, Daytime Café & Gift Hampers Showcase -->
-    <section class="section section--butcher" aria-labelledby="deli-hampers-heading">
+    <!-- Signature Interactive Centrepiece: Platter & Hamper Counter Selector -->
+    <section class="section" id="counter-customiser" aria-labelledby="customiser-heading">
+      <div class="container">
+        <div class="counter-builder" data-counter-builder>
+          <div class="counter-builder__header">
+            <div>
+              <span class="wynd-stamp">Interactive Salumeria Counter Slip</span>
+              <h2 id="customiser-heading" style="margin-bottom: 0.25rem;">Build Your Custom Sharing Board or Gift Hamper</h2>
+              <p style="margin: 0; color: var(--walnut-muted); max-width: 60ch;">
+                Choose your presentation format and tick the counter favourites you would like packed at 3 Danby Wynd — we will carry your choices straight into the pre-order slip.
+              </p>
+            </div>
+            <span class="ph">[Sizes &amp; prices – owner to confirm]</span>
+          </div>
+
+          <!-- Step 1: Presentation Format -->
+          <div>
+            <span class="counter-step-label">Step 1 · Choose Presentation Format</span>
+            <div class="builder-formats">
+              <div class="builder-choice">
+                <input
+                  type="radio"
+                  id="home-fmt-board"
+                  name="home_counter_format"
+                  value="Sharing Antipasto Board"
+                  data-builder-format
+                >
+                <label for="home-fmt-board">
+                  <span class="builder-choice__indicator" aria-hidden="true"></span>
+                  <span>
+                    <span class="builder-choice__title">Sharing Antipasto Board</span>
+                    <span class="builder-choice__sub">Chilled grazing platter sliced fresh from the counter for home entertaining</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="builder-choice">
+                <input
+                  type="radio"
+                  id="home-fmt-hamper"
+                  name="home_counter_format"
+                  value="Bespoke Gift Hamper"
+                  data-builder-format
+                  checked
+                >
+                <label for="home-fmt-hamper">
+                  <span class="builder-choice__indicator" aria-hidden="true"></span>
+                  <span>
+                    <span class="builder-choice__title">Bespoke Gift / Seasonal Hamper</span>
+                    <span class="builder-choice__sub">Hand-packed wicker gift hamper for birthdays, thank-yous &amp; Christmas</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Tick Counter Favourites -->
+          <div>
+            <span class="counter-step-label">Step 2 · Tick Counter Favourites to Include</span>
+            <div class="builder-items-grid">
+              <div class="builder-tick">
+                <input
+                  type="checkbox"
+                  id="home-item-salumi"
+                  value="Cured Italian Salumi"
+                  data-builder-item
+                  checked
+                >
+                <label for="home-item-salumi">
+                  <span class="builder-tick__box" aria-hidden="true"></span>
+                  <span>
+                    <span class="builder-tick__name">Cured Italian Salumi</span>
+                    <span class="builder-tick__note">Prosciutto, regional salame &amp; counter charcuterie</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="builder-tick">
+                <input
+                  type="checkbox"
+                  id="home-item-cheese"
+                  value="Aged Artisan Cheeses"
+                  data-builder-item
+                  checked
+                >
+                <label for="home-item-cheese">
+                  <span class="builder-tick__box" aria-hidden="true"></span>
+                  <span>
+                    <span class="builder-tick__name">Aged Artisan Cheeses</span>
+                    <span class="builder-tick__note">Fine Italian &amp; continental formaggi cut to order</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="builder-tick">
+                <input
+                  type="checkbox"
+                  id="home-item-olives"
+                  value="Nocellara Olives &amp; Sun-Blushed Antipasti"
+                  data-builder-item
+                  checked
+                >
+                <label for="home-item-olives">
+                  <span class="builder-tick__box" aria-hidden="true"></span>
+                  <span>
+                    <span class="builder-tick__name">Nocellara Olives &amp; Sun-Blushed Antipasti</span>
+                    <span class="builder-tick__note">Marinated counter vegetables, olives &amp; accompaniments</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="builder-tick">
+                <input
+                  type="checkbox"
+                  id="home-item-pantry"
+                  value="Artisan Pasta, Oils &amp; Pantry Jars"
+                  data-builder-item
+                  checked
+                >
+                <label for="home-item-pantry">
+                  <span class="builder-tick__box" aria-hidden="true"></span>
+                  <span>
+                    <span class="builder-tick__name">Artisan Pasta, Oils &amp; Pantry Jars</span>
+                    <span class="builder-tick__note">Bronze-die pasta, extra virgin olive oil &amp; balsamic</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="builder-tick">
+                <input
+                  type="checkbox"
+                  id="home-item-sweet"
+                  value="Sweet Italian Biscotti &amp; Festive Treats"
+                  data-builder-item
+                >
+                <label for="home-item-sweet">
+                  <span class="builder-tick__box" aria-hidden="true"></span>
+                  <span>
+                    <span class="builder-tick__name">Sweet Italian Biscotti &amp; Festive Treats</span>
+                    <span class="builder-tick__note">Cantucci, cannoli &amp; seasonal Italian confections</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Summary & Pre-Order Trigger -->
+          <div class="builder-summary-bar basil-surface" role="status" aria-live="polite">
+            <div>
+              <p class="builder-summary-bar__eyebrow">Live Counter Slip</p>
+              <p class="builder-summary-bar__status" data-builder-status>
+                Your Counter Selection: Bespoke Gift Hamper · 4 counter selections
+              </p>
+              <p class="builder-summary-bar__items" data-builder-items-preview>
+                Included: Cured Italian Salumi · Aged Artisan Cheeses · Nocellara Olives &amp; Sun-Blushed Antipasti · Artisan Pasta, Oils &amp; Pantry Jars
+              </p>
+            </div>
+
+            <a class="btn btn--on-basil" href="orders-bookings.html?preorder=1#hamper-preorder" data-send-preorder>
+              Send Selection to Counter Pre-Order →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Daytime Café, Wicker Hampers & Salumeria Craft -->
+    <section class="section section--kraft" aria-labelledby="deli-hampers-heading">
       <div class="container two-col-showcase">
         <div>
-          <span class="wynd-stamp">Salumeria, Café &amp; Gifting</span>
-          <h2 id="deli-hampers-heading">From Morning Espresso &amp; Panini to Bespoke Italian Gift Hampers</h2>
+          <span class="wynd-stamp">Daytime Café &amp; Wicker Gifting</span>
+          <h2 id="deli-hampers-heading">Morning Espresso, Fresh Panini &amp; Hand-Packed Wicker Hampers</h2>
           <p style="color: var(--walnut-muted); margin-top: 0;">
-            Browse the deli counter for Italian cured meats, regional cheeses, marinated antipasti and pantry staples — or order a hand-packed wicker hamper and sharing platter for collection at 3 Danby Wynd.
+            Step off Yarm High Street into a relaxed Italian counter shop for daytime coffee, warm pressed panini, regional pantry shelves, and made-to-order seasonal gift hampers.
           </p>
 
           <div class="counter-pillars">
             <article class="deli-card">
               <h3>Daytime Café &amp; Panini</h3>
               <p>
-                Freshly made panini, coffee and counter treats tucked away from High Street traffic.
+                Freshly pressed panini, Italian coffee and counter pastries away from High Street traffic.
                 <span class="ph">[Café highlights – owner to supply]</span>
               </p>
             </article>
 
             <article class="deli-card">
-              <h3>Hampers &amp; Sharing Boards</h3>
+              <h3>Seasonal &amp; Christmas Hampers</h3>
               <p>
-                Made-to-order wicker hampers and home entertaining platters.
-                <span class="ph">[Sizes &amp; prices – owner to confirm]</span>
+                Bespoke wicker hampers and corporate thank-you gifts packed to order at 3 Danby Wynd.
+                <span class="ph">[Hamper tiers – owner to confirm]</span>
               </p>
             </article>
           </div>
 
           <div class="btn-row">
-            <a class="btn btn--basil" href="orders-bookings.html#hamper-preorder">Pre-Order a Platter or Hamper</a>
-            <a class="btn btn--cream-outline" href="menu-deli.html#panel-hampers">View Deli &amp; Hamper Range</a>
+            <a class="btn btn--basil" href="menu-deli.html">Browse Café, Counter &amp; Hampers</a>
+            <a class="btn btn--cream-outline" href="orders-bookings.html#hamper-preorder">Open Pre-Order Form</a>
           </div>
         </div>
 
@@ -148,11 +341,10 @@
             width="1200"
             height="896"
             alt="Traditional wicker gift hamper filled with Italian olive oil, artisan pasta, preserves and delicatessen treats"
-            loading="lazy"
           >
           <figcaption>
             <span>Seasonal &amp; bespoke Italian wicker hampers</span>
-            <span>Illustrative image · Concept photography</span>
+            <span>Illustrative image</span>
           </figcaption>
         </figure>
       </div>
@@ -161,14 +353,14 @@
     <!-- Find Us Down Danby Wynd & Verified Contact Details -->
     <section class="section" id="danby-wynd" aria-labelledby="find-heading">
       <div class="container">
-        <span class="wynd-stamp">Visit the Shop</span>
-        <h2 id="find-heading">Find Us Down Cobbled Danby Wynd</h2>
+        <span class="wynd-stamp">3 Danby Wynd · Yarm TS15 9SF</span>
+        <h2 id="find-heading">Find the Shop Down Cobbled Danby Wynd</h2>
 
         <div class="wynd-visit-grid">
           <div class="deli-card deli-card--framed">
             <h3>Opening Hours &amp; Friday Evenings</h3>
             <p style="color: var(--walnut-muted); margin-top: 0; font-size: 0.94rem;">
-              Third-party directory websites currently publish conflicting daytime and weekend hours. Your official website displays one authoritative schedule confirmed directly by you:
+              Third-party directory websites publish conflicting daytime and weekend hours. Your official website displays one authoritative schedule confirmed directly by you:
             </p>
             <dl class="info-dl">
               <div class="info-dl__row">
@@ -190,15 +382,15 @@
             <h3>Directions off Yarm High Street</h3>
             <dl class="info-dl" style="margin-top: 0.35rem;">
               <div class="info-dl__row">
-                <dt>Address</dt>
+                <dt>Shop Address</dt>
                 <dd>3 Danby Wynd, Yarm TS15 9SF</dd>
               </div>
               <div class="info-dl__row">
-                <dt>How to Spot the Wynd</dt>
+                <dt>How to Spot Danby Wynd</dt>
                 <dd>Historic cobbled alleyway leading directly off Yarm High Street — just a few paces down the wynd.</dd>
               </div>
               <div class="info-dl__row">
-                <dt>Shop Telephone</dt>
+                <dt>Counter Telephone</dt>
                 <dd><a href="tel:01642791888"><strong>01642 791888</strong></a></dd>
               </div>
             </dl>
