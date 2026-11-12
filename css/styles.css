@@ -1726,3 +1726,19 @@ textarea.form-control {
   background-color: var(--terracotta-deep);
   color: #FFFFFF;
 }
+
+/* === Mobile-First iPhone & Touch Polish === */
+@media (max-width: 960px) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+  .friday-chip,
+  .nav-toggle {
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
