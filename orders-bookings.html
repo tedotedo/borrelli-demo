@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Friday Bookings &amp; Pre-Orders | Borrelli Delicatessen, Yarm (Concept Demo)</title>
+  <meta name="description" content="Book a table for Friday Piatto Di Antipasto Night or pre-order bespoke Italian sharing platters and wicker gift hampers for collection at Borrelli Delicatessen, 3 Danby Wynd, Yarm.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <div class="concept-banner" role="region" aria-label="Concept website notice">
+    <p>Concept design by Mark Aszkenasy – not the official website of Borrelli Delicatessen.</p>
+  </div>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="shop-brand" href="index.html">
+        <img class="shop-brand__seal" src="images/logo-mark.svg" width="76" height="76" alt="Borrelli Delicatessen crest">
+        <span class="shop-brand__copy">
+          <span class="shop-brand__title">Borrelli Delicatessen</span>
+          <span class="shop-brand__wynd">3 Danby Wynd · Off Yarm High Street</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle__icon" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+        <span>Menu</span>
+      </button>
+
+      <nav class="site-nav" id="primary-nav" data-site-nav aria-label="Primary navigation">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="index.html">Salumeria</a></li>
+          <li><a class="site-nav__link" href="menu-deli.html">Café, Counter &amp; Hampers</a></li>
+          <li><a class="site-nav__link" href="orders-bookings.html" aria-current="page">Friday Bookings &amp; Pre-Orders</a></li>
+          <li><a class="site-nav__link" href="index.html#danby-wynd">Find Us</a></li>
+        </ul>
+        <a class="site-nav__cta" href="orders-bookings.html#antipasto-booking">Friday Antipasto Night</a>
+      </nav>
+    </div>
+    <div class="salumeria-trim" aria-hidden="true"></div>
+  </header>
+
+  <main id="main-content">
+    <section class="subpage-banner" aria-labelledby="bookings-orders-heading">
+      <div class="container">
+        <span class="wynd-stamp">3 Danby Wynd · Yarm TS15 9SF</span>
+        <h1 id="bookings-orders-heading">Friday Bookings &amp; Counter Pre-Orders</h1>
+        <p>
+          Reserve your table for our weekly Friday <strong>“Piatto Di Antipasto Night”</strong>, or pre-order bespoke sharing platters and Italian gift hampers for collection down Danby Wynd. Prefer to speak with the shop directly? Call <a href="tel:01642791888"><strong>01642 791888</strong></a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Friday table booking and hamper pre-order forms">
+      <div class="container">
+        <!-- Accessible Dual Form Switcher -->
+        <div class="pill-tablist" role="tablist" aria-label="Choose booking or pre-order">
+          <button
+            class="pill-tab"
+            type="button"
+            role="tab"
+            id="tab-antipasto"
+            aria-selected="true"
+            aria-controls="panel-antipasto"
+            data-hash="antipasto-booking"
+            tabindex="0"
+          >
+            1. Book Friday “Piatto Di Antipasto Night”
+          </button>
+
+          <button
+            class="pill-tab"
+            type="button"
+            role="tab"
+            id="tab-preorder"
+            aria-selected="false"
+            aria-controls="panel-preorder"
+            data-hash="hamper-preorder"
+            tabindex="-1"
+          >
+            2. Pre-Order Sharing Platters &amp; Gift Hampers
+          </button>
+        </div>
+
+        <!-- PANEL 1: Book Friday "Piatto Di Antipasto Night" -->
+        <div class="tab-panel" id="panel-antipasto" role="tabpanel" aria-labelledby="tab-antipasto">
+          <div class="deli-card deli-card--framed">
+            <h2 style="margin-bottom: 0.35rem;">Book Friday “Piatto Di Antipasto Night”</h2>
+            <p style="color: var(--walnut-muted); margin: 0 0 1.4rem;">
+              Held weekly on Friday evenings at 3 Danby Wynd. Exact sitting slots &amp; evening schedule: <span class="ph">[Daytime &amp; Friday Antipasto Night hours – owner to confirm]</span>. Fields marked <span class="req-mark">*</span> are required.
+            </p>
+
+            <form data-demo-form novalidate>
+              <div class="form-grid form-grid--two">
+                <div class="form-field">
+                  <label for="anti-date">Preferred Friday Date <span class="req-mark" aria-hidden="true">*</span></label>
+                  <input
+                    class="form-control"
+                    type="date"
+                    id="anti-date"
+                    name="preferred_date"
+                    required
+                    aria-describedby="anti-date-err"
+                    data-error-empty="Please choose a Friday date for your table."
+                  >
+                  <p class="form-help">Tap an upcoming Friday below or select from the calendar:</p>
+                  <div class="friday-chips" data-friday-chips aria-label="Quick select upcoming Fridays"></div>
+                  <p class="field-error" id="anti-date-err" hidden></p>
+                </div>
+
+                <div class="form-field">
+                  <label for="anti-time">Preferred Seating Time <span class="req-mark" aria-hidden="true">*</span></label>
+                  <select
+                    class="form-control"
+                    id="anti-time"
+                    name="seating_time"
+                    required
+                    aria-describedby="anti-time-err"
+                    data-error-empty="Please select your preferred Friday sitting time."
+                  >
+                    <option value="">Choose a sitting time…</option>
+                    <option value="early-friday">Early Friday Evening Sitting [Exact time – owner to confirm]</option>
+                    <option value="mid-friday">Main Friday Evening Sitting [Exact time – owner to confirm]</option>
+                    <option value="later-friday">Later Friday Sitting [Exact time – owner to confirm]</option>
+                  </select>
+                  <p class="field-error" id="anti-time-err" hidden></p>
+                </div>
+
+                <div class="form-field">
+                  <label for="anti-party">Party Size <span class="req-mark" aria-hidden="true">*</span></label>
+                  <select
+                    class="form-control"
+                    id="anti-party"
+                    name="party_size"
+                    required
+                    aria-describedby="anti-party-err"
+                    data-error-empty="Please select how many guests are joining."
+                  >
+                    <option value="">Select party size…</option>
+                    <option value="2 Guests">2 Guests</option>
+                    <option value="3 Guests">3 Guests</option>
+                    <option value="4 Guests">4 Guests</option>
+                    <option value="5 Guests">5 Guests</option>
+                    <option value="6 Guests">6 Guests</option>
+                    <option value="Larger Group">7+ Guests (Enquire for availability)</option>
+                  </select>
+                  <p class="field-error" id="anti-party-err" hidden></p>
+                </div>
+
+                <div class="form-field">
+                  <label for="anti-name">Your Full Name <span class="req-mark" aria-hidden="true">*</span></label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="anti-name"
+                    name="customer_name"
+                    autocomplete="name"
+                    placeholder="e.g. Claire Henderson"
+                    required
+                    aria-describedby="anti-name-err"
+                    data-error-empty="Please enter your full name."
+                  >
+                  <p class="field-error" id="anti-name-err" hidden></p>
+                </div>
+
+                <div class="form-field">
+                  <label for="anti-phone">Mobile or Telephone <span class="req-mark" aria-hidden="true">*</span></label>
+                  <input
+                    class="form-control"
+                    type="tel"
+                    id="anti-phone"
+                    name="customer_phone"
+                    autocomplete="tel"
+                    placeholder="e.g. 07700 900321"
+                    required
+                    aria-describedby="anti-phone-err"
+                    data-error-empty="Please enter a contact telephone number."
+                  >
+                  <p class="field-error" id="anti-phone-err" hidden></p>
+                </div>
+
+                <div class="form-field">
+                  <label for="anti-email">Email Address <span class="req-mark" aria-hidden="true">*</span></label>
+                  <input
+                    class="form-control"
+                    type="email"
+                    id="anti-email"
+                    name="customer_email"
+                    autocomplete="email"
+                    placeholder="you@example.co.uk"
+                    required
+                    aria-describedby="anti-email-err"
+                    data-error-empty="Please enter a valid email address."
+                  >
+                  <p class="field-error" id="anti-email-err" hidden></p>
+                </div>
+
+                <div class="form-field form-field--full">
+                  <label for="anti-notes">Dietary Requirements or Table Notes (Optional)</label>
+                  <textarea
+                    class="form-control"
+                    id="anti-notes"
+                    name="dietary_notes"
+                    placeholder="Please note any allergies, vegetarian/gluten-free antipasto requests, or special celebrations…"
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="btn-row">
+                <button class="btn btn--terracotta" type="submit">Request Friday Antipasto Table</button>
+              </div>
+
+              <div class="demo-status-panel" data-demo-status role="status" aria-live="polite" tabindex="-1" hidden>
+                <p class="demo-status-panel__headline">Demo only – in the live site this would go straight to Borrelli Delicatessen.</p>
+                <p class="demo-status-panel__summary" data-demo-summary></p>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- PANEL 2: Pre-Order Sharing Platters & Gift Hampers -->
+        <div class="tab-panel" id="panel-preorder" role="tabpanel" aria-labelledby="tab-preorder" hidden>
+          <div class="deli-card deli-card--framed">
+            <h2 style="margin-bottom: 0.35rem;">Pre-Order Sharing Platters &amp; Gift Hampers</h2>
+            <p style="color: var(--walnut-muted); margin: 0 0 1.4rem;">
+              Order hand-packed Italian gift hampers or chilled antipasto grazing platters for collection at <strong>3 Danby Wynd, Yarm TS15 9SF</strong>. Tier details: <span class="ph">[Sizes &amp; prices – owner to confirm]</span>.
+            </p>
+
+            <form data-demo-form novalidate>
+              <div class="form-grid form-grid--two">
+                <div class="form-field">
+                  <label for="ord-tier">Platter or Hamper Selection <span class="req-mark" aria-hidden="true">*</span></label>
+                  <select
+                    class="form-control"
+                    id="ord-tier"
+                    name="order_tier"
+                    required
+                    aria-describedby="ord-tier-err"
+                    data-error-empty="Please select a platter or hamper option."
+                  >
+                    <option value="">Choose platter or hamper tier…</option>
+                    <option value="Sharing Platter (For Two)">Antipasto Sharing Platter — For Two [Sizes &amp; prices – owner to confirm]</option>
+                    <option value="Sharing Platter (Entertaining)">Large Entertaining Antipasto Platter [Sizes &amp; prices – owner to confirm]</option>
+                    <option value="Classic Gift Hamper">Classic Italian Gift Hamper [Sizes &amp; prices – owner to confirm]</option>
+                    <option value="Luxury Wicker Hamper">Luxury Wicker Salumeria Hamper [Sizes &amp; prices – owner to confirm]</option>
+                    <option value="Bespoke / Corporate">Bespoke or Corporate Multi-Hamper Order</option>
+                  </select>
+                  <p class="field-error" id="ord-tier-err" hidden></p>
+                </div>
+
+                <div class="form-field">
+                  <label for="ord-date">Preferred Collection Date (3 Danby Wynd) <span class="req-mark" aria-hidden="true">*</span></label>
+                  <input
+                    class="form-control"
+                    type="date"
+                    id="ord-date"
+                    name="collection_date"
+                    required
+                    aria-describedby="ord-date-err"
+                    data-error-empty="Please select your preferred collection date."
+                  >
+                  <p class="field-error" id="ord-date-err" hidden></p>
+                </div>
+
+                <div class="form-field">
+                  <label for="ord-name">Your Full Name <span class="req-mark" aria-hidden="true">*</span></label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="ord-name"
+                    name="customer_name"
+                    autocomplete="name"
+                    placeholder="e.g. David Rossi"
+                    required
+                    aria-describedby="ord-name-err"
+                    data-error-empty="Please enter your full name."
+                  >
+                  <p class="field-error" id="ord-name-err" hidden></p>
+                </div>
+
+                <div class="form-field">
+                  <label for="ord-phone">Telephone Number <span class="req-mark" aria-hidden="true">*</span></label>
+                  <input
+                    class="form-control"
+                    type="tel"
+                    id="ord-phone"
+                    name="customer_phone"
+                    autocomplete="tel"
+                    placeholder="e.g. 07700 900654"
+                    required
+                    aria-describedby="ord-phone-err"
+                    data-error-empty="Please provide a telephone number."
+                  >
+                  <p class="field-error" id="ord-phone-err" hidden></p>
+                </div>
+
+                <div class="form-field form-field--full">
+                  <label for="ord-email">Email Address <span class="req-mark" aria-hidden="true">*</span></label>
+                  <input
+                    class="form-control"
+                    type="email"
+                    id="ord-email"
+                    name="customer_email"
+                    autocomplete="email"
+                    placeholder="you@example.co.uk"
+                    required
+                    aria-describedby="ord-email-err"
+                    data-error-empty="Please enter a valid email address."
+                  >
+                  <p class="field-error" id="ord-email-err" hidden></p>
+                </div>
+
+                <div class="form-field form-field--full">
+                  <label for="ord-notes">Gift Tag Message, Favourite Counter Items or Dietary Notes <span class="req-mark" aria-hidden="true">*</span></label>
+                  <textarea
+                    class="form-control"
+                    id="ord-notes"
+                    name="gift_and_dietary_notes"
+                    required
+                    aria-describedby="ord-notes-err"
+                    data-error-empty="Please share any preferences, budget guide, or dietary/gift message notes."
+                    placeholder="Let us know target budget, favourite cheeses/salumi/sweet vs savoury items, gift card wording, or allergies…"
+                  ></textarea>
+                  <p class="field-error" id="ord-notes-err" hidden></p>
+                </div>
+              </div>
+
+              <div class="btn-row">
+                <button class="btn btn--basil" type="submit">Send Platter / Hamper Pre-Order</button>
+              </div>
+
+              <div class="demo-status-panel" data-demo-status role="status" aria-live="polite" tabindex="-1" hidden>
+                <p class="demo-status-panel__headline">Demo only – in the live site this would go straight to Borrelli Delicatessen.</p>
+                <p class="demo-status-panel__summary" data-demo-summary></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-title">Borrelli Delicatessen</p>
+          <p style="margin: 0 0 0.65rem; color: #EAE1D3;">
+            Independent Italian Delicatessen &amp; Café<br>
+            3 Danby Wynd, Yarm TS15 9SF<br>
+            Telephone: <a href="tel:01642791888">01642 791888</a>
+          </p>
+          <p style="margin: 0; font-size: 0.88rem; color: #D7CBB9;">
+            Hours: <span class="ph">[Daytime &amp; Friday Antipasto Night hours – owner to confirm]</span>
+          </p>
+        </div>
+
+        <div>
+          <p class="footer-title">Explore</p>
+          <ul class="footer-links">
+            <li><a href="index.html">Salumeria Home</a></li>
+            <li><a href="menu-deli.html">Café Menu, Deli Counter &amp; Hampers</a></li>
+            <li><a href="orders-bookings.html#antipasto-booking">Book Friday Antipasto Night</a></li>
+            <li><a href="orders-bookings.html#hamper-preorder">Pre-Order Platters &amp; Hampers</a></li>
+            <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Borrelli+Delicatessen+3+Danby+Wynd+Yarm+TS15+9SF" target="_blank" rel="noopener noreferrer">Find 3 Danby Wynd (Google Maps)</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-title">Weekly Highlight</p>
+          <p style="margin: 0; font-size: 0.92rem; color: #EAE1D3;">
+            Join us every Friday for <strong>“Piatto Di Antipasto Night”</strong> down cobbled Danby Wynd, or pre-order bespoke Italian hampers and sharing platters for collection.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-disclaimers">
+        <p><strong>Concept Disclaimer:</strong> Unsolicited concept website created for demonstration purposes — not the official website of Borrelli Delicatessen. All bracketed items are illustrative placeholders awaiting owner confirmation.</p>
+        <p><strong>Illustrative Image Credit:</strong> Food platter and wicker hamper images displayed across this concept site are AI-generated illustrative visuals created solely to demonstrate layout and atmosphere, and do not depict actual shop stock or dishes.</p>
+        <p class="footer-credit">Design by Mark Aszkenasy</p>
+      </div>
+    </div>
+  </footer>
+
+  <nav class="mobile-action-bar" aria-label="Quick mobile actions">
+    <a class="mobile-action-bar__btn" href="tel:01642791888">Call</a>
+    <a class="mobile-action-bar__btn" href="menu-deli.html">Deli &amp; Menu</a>
+    <a class="mobile-action-bar__btn mobile-action-bar__btn--primary" href="orders-bookings.html" aria-current="page">Friday / Order</a>
+  </nav>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
