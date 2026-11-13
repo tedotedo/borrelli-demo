@@ -195,20 +195,92 @@ a:hover {
   border-bottom: 1px solid #3C634B;
   font-size: 0.74rem;
   line-height: 1.35;
-  padding: 0.4rem 0.75rem;
+  padding: 0.3rem 0.65rem;
   text-align: center;
 }
 
-.concept-banner p {
-  margin: 0 auto;
+.concept-banner__inner {
   max-width: var(--container-max);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem 0.75rem;
+}
+
+.concept-banner p {
+  margin: 0;
   font-weight: 600;
+  min-width: 0;
+}
+
+.concept-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  flex-shrink: 0;
+}
+
+.concept-switcher__label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #DCE6D5;
+  margin-right: 0.2rem;
+}
+
+.concept-switcher__pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  min-height: 42px;
+  padding: 0.25rem;
+  text-decoration: none;
+  color: var(--butcher-paper);
+}
+
+.concept-switcher__pill span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 24px;
+  padding: 0 0.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(251, 246, 236, 0.45);
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--butcher-paper);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+.concept-switcher__pill:hover span {
+  border-color: #FBF6EC;
+  background-color: rgba(251, 246, 236, 0.22);
+  color: #FFFFFF;
+}
+
+.concept-switcher__pill.is-active span,
+.concept-switcher__pill[aria-current="page"] span,
+.concept-switcher__pill[aria-current="true"] span {
+  background-color: #FBF6EC;
+  border-color: #FBF6EC;
+  color: var(--basil-deep);
 }
 
 @media (min-width: 768px) {
   .concept-banner {
     font-size: 0.8rem;
-    padding: 0.46rem 1.5rem;
+    padding: 0.22rem 1.5rem;
+  }
+
+  .concept-banner__inner {
+    justify-content: space-between;
   }
 }
 
