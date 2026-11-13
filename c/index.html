@@ -26,8 +26,9 @@
     </div>
   </div>
 
-  <!-- Sticky Sunlit App Bar + Pill Nav -->
+  <!-- Sticky Sunlit App Bar + 2.5px Scroll-Progress Hairline + Pill Nav -->
   <header class="counter-appbar">
+    <div class="scroll-progress-rail" data-scroll-progress aria-hidden="true"></div>
     <div class="container counter-appbar__top">
       <a class="counter-brand" href="#counter">
         <img class="counter-brand__seal" src="../images/logo-mark.svg" width="36" height="36" alt="">
@@ -79,34 +80,33 @@
             </p>
           </div>
 
+          <!-- Full-Width Rounded 16:10 Hero Frame (ordered beneath H1 on mobile, 2-col right on desktop) -->
           <div class="sunlit-hero-visuals">
-            <figure class="app-photo-card">
-              <div class="app-photo-card__media">
-                <img
-                  src="../images/hero.jpg"
-                  width="1440"
-                  height="803"
-                  alt="Generous Italian Piatto di Antipasto sharing platter with cured meats, cheeses and olives"
-                >
-                <span class="app-photo-badge">Illustrative image</span>
-              </div>
+            <figure class="app-photo-card app-photo-card--hero">
+              <button
+                class="app-photo-trigger"
+                type="button"
+                data-lightbox-src="../images/hero.jpg"
+                data-lightbox-alt="Generous Italian Piatto di Antipasto sharing platter with cured meats, cheeses and olives"
+                data-lightbox-title="Friday “Piatto Di Antipasto Night” Sharing Boards"
+                data-lightbox-caption="Cured prosciutto, regional salame, creamy burrata, aged Parmigiano, Nocellara olives and rosemary focaccia served down cobbled Danby Wynd."
+                data-lightbox-exp="exp-friday"
+                data-lightbox-cta="Book Friday Antipasto Table →"
+                aria-label="Enlarge illustrative photo of Friday Piatto di Antipasto sharing platter"
+              >
+                <span class="app-photo-card__media app-photo-card__media--hero">
+                  <img
+                    src="../images/hero.jpg"
+                    width="1440"
+                    height="803"
+                    alt="Generous Italian Piatto di Antipasto sharing platter with cured meats, cheeses and olives"
+                  >
+                  <span class="app-photo-badge">Illustrative image</span>
+                  <span class="app-zoom-pill" aria-hidden="true">🔍 View closer</span>
+                </span>
+              </button>
               <figcaption>
-                <strong>Friday Antipasto Boards</strong> · Illustrative image
-              </figcaption>
-            </figure>
-
-            <figure class="app-photo-card">
-              <div class="app-photo-card__media">
-                <img
-                  src="../images/feature.jpg"
-                  width="1200"
-                  height="896"
-                  alt="Wicker gift hamper packed with Italian olive oil, artisan pasta and delicatessen treats"
-                >
-                <span class="app-photo-badge">Illustrative image</span>
-              </div>
-              <figcaption>
-                <strong>Bespoke Wicker Hampers</strong> · Illustrative image
+                <strong>Friday “Piatto Di Antipasto Night” &amp; Grazing Boards</strong> · Illustrative image
               </figcaption>
             </figure>
           </div>
@@ -141,7 +141,7 @@
       </div>
     </section>
 
-    <!-- Café & Hampers + Tappable Deli Counter Selector Pills with Live Badge Count -->
+    <!-- Café & Hampers + 3 Unique Editorial Photos + 1-Tap Presets + Balance Meter -->
     <section class="app-section app-section--oat" id="cafe-hampers" aria-labelledby="cafe-hampers-heading">
       <div class="container">
         <div class="app-sec-head">
@@ -152,9 +152,33 @@
           <span class="ph">[Opening hours &amp; prices – owner to confirm]</span>
         </div>
 
-        <!-- Clean 3-Column Café & Deli Overview -->
+        <!-- Clean 3-Column Café & Deli Overview (detail-2.jpg, detail-1.jpg, feature.jpg — Zero Duplicates) -->
         <div class="cafe-deli-cards">
           <article class="clean-deli-box">
+            <figure class="deli-box-figure">
+              <button
+                class="app-photo-trigger"
+                type="button"
+                data-lightbox-src="../images/detail-2.jpg"
+                data-lightbox-alt="Freshly pressed prosciutto, mozzarella and basil ciabatta panino on butcher paper beside an Italian espresso"
+                data-lightbox-title="Daytime Café · Pressed Panini &amp; Espresso"
+                data-lightbox-caption="Warm ciabatta panini filled with prosciutto, melted mozzarella, roasted tomatoes and basil alongside Italian espresso."
+                data-lightbox-exp="exp-board"
+                data-lightbox-cta="Order from the Counter →"
+                aria-label="Enlarge illustrative photo of freshly pressed panino and espresso"
+              >
+                <span class="app-photo-card__media">
+                  <img
+                    src="../images/detail-2.jpg"
+                    width="1200"
+                    height="896"
+                    alt="Freshly pressed prosciutto, mozzarella and basil ciabatta panino on butcher paper beside an Italian espresso"
+                  >
+                  <span class="app-photo-badge">Illustrative image</span>
+                </span>
+              </button>
+              <figcaption>Pressed ciabatta panino &amp; espresso · Illustrative image</figcaption>
+            </figure>
             <div class="clean-deli-box__head">
               <h3>Daytime Café &amp; Panini</h3>
               <span class="small-chip">Dine In · Takeaway</span>
@@ -176,6 +200,30 @@
           </article>
 
           <article class="clean-deli-box">
+            <figure class="deli-box-figure">
+              <button
+                class="app-photo-trigger"
+                type="button"
+                data-lightbox-src="../images/detail-1.jpg"
+                data-lightbox-alt="Artisanal wicker Italian gift hamper tied with a terracotta ribbon, filled with olive oil, bronze-die pasta and marinated antipasti"
+                data-lightbox-title="Salumeria Pantry &amp; Terracotta-Ribbon Hampers"
+                data-lightbox-caption="Extra-virgin olive oils, bronze-die regional pastas and marinated antipasti jars hand-packed at 3 Danby Wynd."
+                data-lightbox-exp="exp-hamper"
+                data-lightbox-cta="Pre-Order a Pantry Hamper →"
+                aria-label="Enlarge illustrative photo of terracotta-ribbon pantry hamper"
+              >
+                <span class="app-photo-card__media">
+                  <img
+                    src="../images/detail-1.jpg"
+                    width="1200"
+                    height="896"
+                    alt="Artisanal wicker Italian gift hamper tied with a terracotta ribbon, filled with olive oil, bronze-die pasta and marinated antipasti"
+                  >
+                  <span class="app-photo-badge">Illustrative image</span>
+                </span>
+              </button>
+              <figcaption>Bronze-die pasta, olive oil &amp; antipasti · Illustrative image</figcaption>
+            </figure>
             <div class="clean-deli-box__head">
               <h3>Salumi, Cheese &amp; Pantry</h3>
               <span class="small-chip">Sliced Fresh</span>
@@ -197,6 +245,30 @@
           </article>
 
           <article class="clean-deli-box">
+            <figure class="deli-box-figure">
+              <button
+                class="app-photo-trigger"
+                type="button"
+                data-lightbox-src="../images/feature.jpg"
+                data-lightbox-alt="Wicker gift hamper packed with Italian olive oil, artisan pasta, preserves and delicatessen treats"
+                data-lightbox-title="Luxury Hinged Wicker Gift Hampers"
+                data-lightbox-caption="Hand-packed wicker hampers with olive oils, tagliatelle nests, pesto jars and almond biscotti for birthdays, Christmas &amp; corporate gifts."
+                data-lightbox-exp="exp-hamper"
+                data-lightbox-cta="Pre-Order a Wicker Hamper →"
+                aria-label="Enlarge illustrative photo of luxury wicker gift hamper"
+              >
+                <span class="app-photo-card__media">
+                  <img
+                    src="../images/feature.jpg"
+                    width="1200"
+                    height="896"
+                    alt="Wicker gift hamper packed with Italian olive oil, artisan pasta, preserves and delicatessen treats"
+                  >
+                  <span class="app-photo-badge">Illustrative image</span>
+                </span>
+              </button>
+              <figcaption>Hinged wicker seasonal hampers · Illustrative image</figcaption>
+            </figure>
             <div class="clean-deli-box__head">
               <h3>Boards &amp; Gift Hampers</h3>
               <span class="small-chip">3 Danby Wynd</span>
@@ -218,40 +290,74 @@
           </article>
         </div>
 
-        <!-- Tappable Deli Counter & Hamper Item Selector Pills with Live Badge Count -->
+        <!-- Tappable Deli Counter & Hamper Item Selector Pills + 1-Tap Presets + Balance Meter -->
         <div class="selector-app-card" data-pill-selector>
           <div class="selector-app-card__top">
             <div>
               <h3 class="selector-app-card__title">Tap Favourites for Your Grazing Board or Gift Hamper</h3>
               <p class="selector-app-card__sub">
-                Your tapped items attach automatically when you pre-order a board or hamper in Step 1 below.
+                Pick a 1-tap preset or toggle individual counter favourites — your items attach automatically in the 3-step desk below.
               </p>
             </div>
             <span class="live-count-badge" data-pill-count aria-live="polite">4 items selected</span>
           </div>
 
+          <!-- 1-Tap Counter Presets -->
+          <div class="c-presets-box">
+            <span class="c-presets-box__label">Quick 1-Tap Counter Presets</span>
+            <div class="c-presets-row" role="group" aria-label="One-tap counter presets">
+              <button class="c-preset-pill" type="button" data-c-preset="friday4">
+                🍷 Friday Antipasto Night Table for 4
+              </button>
+              <button class="c-preset-pill is-active" type="button" data-c-preset="hamper">
+                🧺 Bespoke Italian Gift Hamper
+              </button>
+              <button class="c-preset-pill" type="button" data-c-preset="platter">
+                🧀 Weekend Salumi &amp; Formaggi Platter
+              </button>
+            </div>
+          </div>
+
           <div class="tappable-pills" role="group" aria-label="Select delicatessen items">
-            <button class="deli-pill is-on" type="button" data-deli-item="Prosciutto &amp; Cured Salumi" aria-pressed="true">
+            <button class="deli-pill is-on" type="button" data-deli-item="Prosciutto &amp; Cured Salumi" data-cat="salumi" aria-pressed="true">
               <span class="deli-pill__icon" aria-hidden="true">✓</span> Prosciutto &amp; Cured Salumi
             </button>
-            <button class="deli-pill is-on" type="button" data-deli-item="Aged Italian Cheeses" aria-pressed="true">
+            <button class="deli-pill is-on" type="button" data-deli-item="Aged Italian Cheeses" data-cat="formaggi" aria-pressed="true">
               <span class="deli-pill__icon" aria-hidden="true">✓</span> Aged Italian Cheeses
             </button>
-            <button class="deli-pill is-on" type="button" data-deli-item="Nocellara Olives &amp; Antipasti" aria-pressed="true">
+            <button class="deli-pill is-on" type="button" data-deli-item="Nocellara Olives &amp; Antipasti" data-cat="antipasti" aria-pressed="true">
               <span class="deli-pill__icon" aria-hidden="true">✓</span> Nocellara Olives &amp; Antipasti
             </button>
-            <button class="deli-pill is-on" type="button" data-deli-item="Bronze-Die Pasta &amp; Olive Oil" aria-pressed="true">
+            <button class="deli-pill is-on" type="button" data-deli-item="Bronze-Die Pasta &amp; Olive Oil" data-cat="antipasti" aria-pressed="true">
               <span class="deli-pill__icon" aria-hidden="true">✓</span> Bronze-Die Pasta &amp; Olive Oil
             </button>
-            <button class="deli-pill" type="button" data-deli-item="Fresh Focaccia &amp; Grissini" aria-pressed="false">
+            <button class="deli-pill" type="button" data-deli-item="Fresh Focaccia &amp; Grissini" data-cat="antipasti" aria-pressed="false">
               <span class="deli-pill__icon" aria-hidden="true">+</span> Fresh Focaccia &amp; Grissini
             </button>
-            <button class="deli-pill" type="button" data-deli-item="Cannoli &amp; Almond Biscotti" aria-pressed="false">
+            <button class="deli-pill" type="button" data-deli-item="Cannoli &amp; Almond Biscotti" data-cat="antipasti" aria-pressed="false">
               <span class="deli-pill__icon" aria-hidden="true">+</span> Cannoli &amp; Almond Biscotti
             </button>
-            <button class="deli-pill" type="button" data-deli-item="Seasonal Panettone &amp; Preserves" aria-pressed="false">
+            <button class="deli-pill" type="button" data-deli-item="Seasonal Panettone &amp; Preserves" data-cat="antipasti" aria-pressed="false">
               <span class="deli-pill__icon" aria-hidden="true">+</span> Seasonal Panettone &amp; Preserves
             </button>
+          </div>
+
+          <!-- Live Counter Balance Meter -->
+          <div class="c-balance-meter" data-c-balance aria-label="Counter balance meter">
+            <div class="c-balance-meter__head">
+              <span class="c-balance-meter__title">Counter Balance Meter</span>
+              <span class="c-balance-meter__verdict" data-c-verdict>Classic Salumeria Trio Balanced</span>
+            </div>
+            <div class="c-balance-meter__bar" aria-hidden="true">
+              <div class="c-balance-meter__seg c-balance-meter__seg--salumi" data-c-seg-salumi style="width: 25%"></div>
+              <div class="c-balance-meter__seg c-balance-meter__seg--formaggi" data-c-seg-formaggi style="width: 25%"></div>
+              <div class="c-balance-meter__seg c-balance-meter__seg--antipasti" data-c-seg-antipasti style="width: 50%"></div>
+            </div>
+            <div class="c-balance-meter__legend">
+              <span data-c-leg-salumi><i class="c-dot c-dot--salumi"></i> Salumi: ✓</span>
+              <span data-c-leg-formaggi><i class="c-dot c-dot--formaggi"></i> Formaggi: ✓</span>
+              <span data-c-leg-antipasti><i class="c-dot c-dot--antipasti"></i> Antipasti &amp; Pantry: 2</span>
+            </div>
           </div>
 
           <div class="selector-app-card__footer">
@@ -494,6 +600,7 @@
               <div class="c-demo-notice" data-demo-status role="status" aria-live="polite" tabindex="-1" hidden>
                 <p class="c-demo-notice__headline">Demo only – in the live site this would go straight to Borrelli Delicatessen.</p>
                 <p class="c-demo-notice__detail" data-demo-summary></p>
+                <div class="c-owner-ticket" data-owner-ticket></div>
               </div>
             </div>
           </form>
@@ -559,13 +666,36 @@
 
       <div class="counter-footer__legal">
         <p><strong>Concept Disclaimer:</strong> Concept design by Mark Aszkenasy – not the official website of Borrelli Delicatessen. All bracketed items are placeholders awaiting owner confirmation.</p>
-        <p><strong>Illustrative Image Credit:</strong> Food platter and gift hamper images shown on this concept page are AI-generated illustrative visuals used solely to preview layout and do not depict actual shop stock or dishes.</p>
+        <p><strong>Illustrative Image Credit:</strong> Antipasto platter, pressed panino and gift hamper photographs shown on this concept page are AI-generated illustrative visuals used solely to preview layout and do not depict actual shop stock or dishes.</p>
         <p class="counter-footer__sig">Design by Mark Aszkenasy</p>
       </div>
     </div>
   </footer>
 
-  <!-- Mobile Bottom Action Bar -->
+  <!-- Accessible Native Photo Lightbox -->
+  <dialog class="borrelli-lightbox" id="borrelli-lightbox" aria-labelledby="c-lb-title">
+    <div class="borrelli-lightbox__inner">
+      <div class="borrelli-lightbox__top">
+        <span class="borrelli-lightbox__tag">Illustrative image · 3 Danby Wynd</span>
+        <button class="borrelli-lightbox__close" type="button" data-lightbox-close aria-label="Close photo preview">✕</button>
+      </div>
+      <div class="borrelli-lightbox__media">
+        <img id="c-lb-img" src="../images/hero.jpg" alt="">
+      </div>
+      <div class="borrelli-lightbox__body">
+        <div class="borrelli-lightbox__copy">
+          <h3 class="borrelli-lightbox__title" id="c-lb-title">Friday “Piatto Di Antipasto Night”</h3>
+          <p class="borrelli-lightbox__caption" id="c-lb-caption"></p>
+        </div>
+        <button class="btn btn--terracotta" type="button" id="c-lb-cta" data-lb-exp="exp-friday">Order / Book →</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Non-blocking Micro-Toast -->
+  <div class="borrelli-toast" id="borrelli-toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Frosted Glass Safe-Area Floating Mobile Dock -->
   <nav class="counter-bottom-bar" aria-label="Quick mobile actions">
     <a class="counter-bottom-bar__btn" href="tel:01642791888">Call</a>
     <a class="counter-bottom-bar__btn" href="#cafe-hampers">Counter</a>

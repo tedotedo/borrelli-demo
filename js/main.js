@@ -1,5 +1,6 @@
 /* ==========================================================================
-   Borrelli Delicatessen — Interactive Counter Customiser, Tabs & Demo Forms
+   Borrelli Delicatessen — Set A Interactive Logic
+   Counter Presets · Live Balance Meter · Lightbox · Micro-Toast · Owner Ticket
    Zero external network calls · Salumeria Platter & Hamper Pre-Order Sync
    ========================================================================== */
 
@@ -7,6 +8,45 @@
   'use strict';
 
   var STORAGE_KEY = 'borrelli_counter_selection';
+  var toastTimer = null;
+
+  function showToast(msg) {
+    var toast = document.getElementById('borrelli-toast');
+    if (!toast || !msg) return;
+    toast.textContent = msg;
+    toast.classList.add('is-visible');
+    if (toastTimer) window.clearTimeout(toastTimer);
+    toastTimer = window.setTimeout(function () {
+      toast.classList.remove('is-visible');
+    }, 2600);
+  }
+
+  function copyToClipboard(text, onDone) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(onDone, function () {
+        fallbackCopy(text, onDone);
+      });
+    } else {
+      fallbackCopy(text, onDone);
+    }
+  }
+
+  function fallbackCopy(text, onDone) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+    } catch (err) {
+      /* ignore */
+    }
+    document.body.removeChild(ta);
+    if (onDone) onDone();
+  }
 
   /* 1. Keyboard-Accessible Mobile Navigation */
   var navToggle = document.querySelector('[data-nav-toggle]');
@@ -16,9 +56,7 @@
     if (!navToggle || !siteNav) return;
     navToggle.setAttribute('aria-expanded', 'false');
     siteNav.classList.remove('is-open');
-    if (returnFocus) {
-      navToggle.focus();
-    }
+    if (returnFocus) navToggle.focus();
   }
 
   if (navToggle && siteNav) {
@@ -51,8 +89,61 @@
     });
   }
 
-  /* 2. Accessible Tab Switchers (Menu/Deli & Dual Booking/Order Forms) */
+  /* 2. Native <dialog> Photo Lightbox */
+  var lightbox = document.getElementById('borrelli-lightbox');
+  if (lightbox && typeof lightbox.showModal === 'function') {
+    var lbImg = document.getElementById('lightbox-img');
+    var lbTitle = document.getElementById('lightbox-title');
+    var lbCaption = document.getElementById('lightbox-caption');
+    var lbCta = document.getElementById('lightbox-cta');
+    var lbClose = lightbox.querySelector('[data-lightbox-close]');
+    var lastTrigger = null;
+
+    document.querySelectorAll('[data-lightbox-src]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        lastTrigger = btn;
+        if (lbImg) {
+          lbImg.src = btn.getAttribute('data-lightbox-src') || '';
+          lbImg.alt = btn.getAttribute('data-lightbox-alt') || '';
+        }
+        if (lbTitle) lbTitle.textContent = btn.getAttribute('data-lightbox-title') || 'Borrelli Delicatessen';
+        if (lbCaption) lbCaption.textContent = btn.getAttribute('data-lightbox-caption') || '';
+        if (lbCta) {
+          lbCta.setAttribute('href', btn.getAttribute('data-lightbox-cta-href') || 'orders-bookings.html');
+          lbCta.textContent = btn.getAttribute('data-lightbox-cta-label') || 'Order or Book →';
+        }
+        lightbox.showModal();
+      });
+    });
+
+    if (lbClose) {
+      lbClose.addEventListener('click', function () {
+        lightbox.close();
+      });
+    }
+
+    if (lbCta) {
+      lbCta.addEventListener('click', function () {
+        lightbox.close();
+      });
+    }
+
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) {
+        lightbox.close();
+      }
+    });
+
+    lightbox.addEventListener('close', function () {
+      if (lastTrigger && typeof lastTrigger.focus === 'function') {
+        lastTrigger.focus();
+      }
+    });
+  }
+
+  /* 3. Accessible Tab Switchers (Menu/Deli & Dual Booking/Order Forms) */
   var tablists = document.querySelectorAll('[role="tablist"]');
+  var tabActivators = {};
 
   tablists.forEach(function (tablist) {
     var tabs = Array.prototype.slice.call(tablist.querySelectorAll('[role="tab"]'));
@@ -77,6 +168,10 @@
     }
 
     tabs.forEach(function (tab, index) {
+      tabActivators[tab.id] = function () {
+        activateTab(tab, false);
+      };
+
       tab.addEventListener('click', function () {
         activateTab(tab, false);
       });
@@ -103,9 +198,11 @@
     function syncFromUrl() {
       var hash = window.location.hash ? window.location.hash.slice(1) : '';
       var isPreorderQuery = false;
+      var isFridayQuery = false;
       try {
         var sp = new URLSearchParams(window.location.search);
         isPreorderQuery = sp.get('preorder') === '1';
+        isFridayQuery = Boolean(sp.get('friday_party'));
       } catch (err) {
         /* ignore */
       }
@@ -117,7 +214,8 @@
           hash === panelId ||
           hash === dataHash ||
           hash === tab.id ||
-          (isPreorderQuery && panelId === 'panel-preorder')
+          (isPreorderQuery && panelId === 'panel-preorder') ||
+          (isFridayQuery && panelId === 'panel-antipasto')
         ) {
           activateTab(tab, false);
         }
@@ -128,7 +226,7 @@
     window.addEventListener('hashchange', syncFromUrl);
   });
 
-  /* 3. Interactive "Build Your Custom Sharing Board or Gift Hamper" Counter Selector */
+  /* 4. Interactive Counter Builder + 1-Tap Presets + Live Counter Balance Meter */
   var builders = document.querySelectorAll('[data-counter-builder]');
 
   function loadSavedSelection() {
@@ -159,11 +257,22 @@
     var itemChecks = Array.prototype.slice.call(
       builder.querySelectorAll('input[type="checkbox"][data-builder-item]')
     );
+    var presetBtns = Array.prototype.slice.call(
+      builder.querySelectorAll('[data-counter-preset]')
+    );
     var statusText = builder.querySelector('[data-builder-status]');
     var itemsText = builder.querySelector('[data-builder-items-preview]');
     var sendLink = builder.querySelector('[data-send-preorder]');
 
-    /* Restore prior selection if present */
+    var segSalumi = builder.querySelector('[data-seg-salumi]');
+    var segFormaggi = builder.querySelector('[data-seg-formaggi]');
+    var segAntipasti = builder.querySelector('[data-seg-antipasti]');
+    var pillSalumi = builder.querySelector('[data-pill-salumi]');
+    var pillFormaggi = builder.querySelector('[data-pill-formaggi]');
+    var pillAntipasti = builder.querySelector('[data-pill-antipasti]');
+    var verdictEl = builder.querySelector('[data-balance-verdict]');
+    var fridayModeActive = false;
+
     var existing = loadSavedSelection();
     if (existing && existing.format && Array.isArray(existing.items)) {
       formatRadios.forEach(function (r) {
@@ -172,6 +281,49 @@
       itemChecks.forEach(function (c) {
         c.checked = existing.items.indexOf(c.value) !== -1;
       });
+    }
+
+    function updateBalanceMeter() {
+      var sal = 0;
+      var form = 0;
+      var anti = 0;
+
+      itemChecks.forEach(function (c) {
+        if (!c.checked) return;
+        var cat = c.getAttribute('data-category');
+        if (cat === 'salumi') sal++;
+        else if (cat === 'formaggi') form++;
+        else anti++;
+      });
+
+      var total = sal + form + anti;
+      var pSal = total ? Math.round((sal / total) * 100) : 0;
+      var pForm = total ? Math.round((form / total) * 100) : 0;
+      var pAnti = total ? Math.max(0, 100 - pSal - pForm) : 0;
+
+      if (segSalumi) segSalumi.style.width = pSal + '%';
+      if (segFormaggi) segFormaggi.style.width = pForm + '%';
+      if (segAntipasti) segAntipasti.style.width = pAnti + '%';
+
+      if (pillSalumi) {
+        pillSalumi.innerHTML = '<span class="balance-pill__dot balance-pill__dot--salumi"></span> Salumi: ' + (sal ? '✓ Included' : 'Not ticked');
+      }
+      if (pillFormaggi) {
+        pillFormaggi.innerHTML = '<span class="balance-pill__dot balance-pill__dot--formaggi"></span> Formaggi: ' + (form ? '✓ Included' : 'Not ticked');
+      }
+      if (pillAntipasti) {
+        pillAntipasti.innerHTML = '<span class="balance-pill__dot balance-pill__dot--antipasti"></span> Antipasti &amp; Pantry: ' + anti + ' selected';
+      }
+
+      if (verdictEl) {
+        if (sal > 0 && form > 0 && anti > 0) {
+          verdictEl.textContent = 'Classic Salumeria Trio Balanced';
+        } else if (total === 0) {
+          verdictEl.textContent = 'Select counter favourites above';
+        } else {
+          verdictEl.textContent = 'Bespoke Mix · Add Salumi, Formaggi or Antipasti for a full trio';
+        }
+      }
     }
 
     function computeState() {
@@ -185,11 +337,15 @@
         if (c.checked) chosenItems.push(c.value);
       });
 
+      updateBalanceMeter();
+
       var count = chosenItems.length;
       var noun = count === 1 ? '1 counter selection' : count + ' counter selections';
 
       if (statusText) {
-        statusText.textContent = 'Your Counter Selection: ' + chosenFormat + ' · ' + noun;
+        statusText.textContent = fridayModeActive
+          ? 'Friday Antipasto Night Table for 4 · ' + noun
+          : 'Your Counter Selection: ' + chosenFormat + ' · ' + noun;
       }
 
       if (itemsText) {
@@ -199,28 +355,70 @@
       }
 
       if (sendLink) {
-        var qs = new URLSearchParams();
-        qs.set('preorder', '1');
-        qs.set('format', chosenFormat);
-        if (count > 0) {
-          qs.set('items', chosenItems.join(', '));
+        if (fridayModeActive) {
+          sendLink.textContent = 'Pull Friday Table Ticket for 4 →';
+          sendLink.setAttribute('href', 'orders-bookings.html?friday_party=4#antipasto-booking');
+        } else {
+          sendLink.textContent = 'Send Selection to Counter Pre-Order →';
+          var qs = new URLSearchParams();
+          qs.set('preorder', '1');
+          qs.set('format', chosenFormat);
+          if (count > 0) {
+            qs.set('items', chosenItems.join(', '));
+          }
+          sendLink.setAttribute('href', 'orders-bookings.html?' + qs.toString() + '#hamper-preorder');
         }
-        sendLink.setAttribute('href', 'orders-bookings.html?' + qs.toString() + '#hamper-preorder');
       }
 
       return { format: chosenFormat, items: chosenItems };
     }
 
+    presetBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var key = btn.getAttribute('data-counter-preset');
+        presetBtns.forEach(function (b) { b.classList.toggle('is-active', b === btn); });
+
+        if (key === 'friday4') {
+          fridayModeActive = true;
+          formatRadios.forEach(function (r) { r.checked = r.value === 'Sharing Antipasto Board'; });
+          itemChecks.forEach(function (c) {
+            c.checked = /Salumi|Cheeses|Olives/i.test(c.value);
+          });
+          saveSelection(computeState());
+          showToast('🍷 Preset ready: Friday Antipasto Night Table for 4');
+        } else if (key === 'hamper') {
+          fridayModeActive = false;
+          formatRadios.forEach(function (r) { r.checked = r.value === 'Bespoke Gift Hamper'; });
+          itemChecks.forEach(function (c) {
+            c.checked = /Salumi|Cheeses|Pasta|Biscotti/i.test(c.value);
+          });
+          saveSelection(computeState());
+          showToast('🧺 Preset applied: Bespoke Italian Gift Hamper');
+        } else if (key === 'platter') {
+          fridayModeActive = false;
+          formatRadios.forEach(function (r) { r.checked = r.value === 'Sharing Antipasto Board'; });
+          itemChecks.forEach(function (c) {
+            c.checked = /Salumi|Cheeses|Olives/i.test(c.value);
+          });
+          saveSelection(computeState());
+          showToast('🧀 Preset applied: Weekend Salumi & Formaggi Platter');
+        }
+      });
+    });
+
     computeState();
 
     formatRadios.forEach(function (r) {
       r.addEventListener('change', function () {
+        fridayModeActive = false;
+        presetBtns.forEach(function (b) { b.classList.remove('is-active'); });
         saveSelection(computeState());
       });
     });
 
     itemChecks.forEach(function (c) {
       c.addEventListener('change', function () {
+        presetBtns.forEach(function (b) { b.classList.remove('is-active'); });
         saveSelection(computeState());
       });
     });
@@ -232,12 +430,82 @@
     }
   });
 
-  /* 4. Pre-Populate Counter Pre-Order Form on orders-bookings.html */
+  /* 5. Date Inputs, Upcoming Friday Helper Chips & Booking Page Presets */
+  var now = new Date();
+  var todayIso = [
+    now.getFullYear(),
+    String(now.getMonth() + 1).padStart(2, '0'),
+    String(now.getDate()).padStart(2, '0')
+  ].join('-');
+
+  document.querySelectorAll('input[type="date"]').forEach(function (input) {
+    if (!input.getAttribute('min')) {
+      input.setAttribute('min', todayIso);
+    }
+  });
+
+  var fridayChipMount = document.querySelector('[data-friday-chips]');
+  var fridayDateInput = document.getElementById('anti-date');
+  var upcomingFridayIsos = [];
+
+  if (fridayDateInput) {
+    var cursor = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var daysUntilFriday = (5 - cursor.getDay() + 7) % 7;
+    cursor.setDate(cursor.getDate() + daysUntilFriday);
+
+    var shortMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    for (var i = 0; i < 3; i++) {
+      var d = new Date(cursor.getTime());
+      d.setDate(cursor.getDate() + i * 7);
+      var yyyy = d.getFullYear();
+      var mm = String(d.getMonth() + 1).padStart(2, '0');
+      var dd = String(d.getDate()).padStart(2, '0');
+      var iso = yyyy + '-' + mm + '-' + dd;
+      upcomingFridayIsos.push(iso);
+
+      if (fridayChipMount) {
+        var label = 'Fri ' + d.getDate() + ' ' + shortMonths[d.getMonth()];
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'friday-chip';
+        btn.setAttribute('data-iso', iso);
+        btn.textContent = label;
+        btn.addEventListener('click', function (ev) {
+          var chosen = ev.currentTarget.getAttribute('data-iso');
+          fridayDateInput.value = chosen;
+          fridayDateInput.dispatchEvent(new Event('change'));
+        });
+        fridayChipMount.appendChild(btn);
+      }
+    }
+  }
+
+  /* Pre-Populate Counter Pre-Order or Friday Preset on orders-bookings.html */
   var ordTier = document.getElementById('ord-tier');
+  var ordDate = document.getElementById('ord-date');
   var ordNotes = document.getElementById('ord-notes');
+  var antiParty = document.getElementById('anti-party');
+  var antiTime = document.getElementById('anti-time');
+  var antiNotes = document.getElementById('anti-notes');
   var prefillBanner = document.querySelector('[data-prefill-banner]');
   var prefillText = document.querySelector('[data-prefill-text]');
   var clearPrefillBtn = document.querySelector('[data-clear-prefill]');
+
+  try {
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('friday_party') === '4' && antiParty) {
+      if (tabActivators['tab-antipasto']) tabActivators['tab-antipasto']();
+      antiParty.value = '4 Guests';
+      if (antiTime && !antiTime.value) antiTime.value = 'mid-friday';
+      if (fridayDateInput && upcomingFridayIsos[0]) fridayDateInput.value = upcomingFridayIsos[0];
+      if (antiNotes && !antiNotes.value.trim()) {
+        antiNotes.value = 'Friday Piatto Di Antipasto Night table for 4 guests — classic salumi, formaggi & marinated antipasti boards.';
+      }
+    }
+  } catch (err) {
+    /* ignore */
+  }
 
   if (ordTier && ordNotes) {
     var payload = null;
@@ -292,59 +560,59 @@
         }
         ordTier.value = '';
         ordNotes.value = '';
-        if (prefillBanner) {
-          prefillBanner.hidden = true;
-        }
+        if (prefillBanner) prefillBanner.hidden = true;
         ordTier.focus();
+        showToast('↺ Cleared custom counter selection');
       });
     }
   }
 
-  /* 5. Date Inputs & Upcoming Friday Helper Chips */
-  var now = new Date();
-  var todayIso = now.toISOString().split('T')[0];
+  /* 1-Tap Presets on orders-bookings.html */
+  var orderPresetBtns = Array.prototype.slice.call(document.querySelectorAll('[data-order-preset]'));
+  orderPresetBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var key = btn.getAttribute('data-order-preset');
+      orderPresetBtns.forEach(function (b) { b.classList.toggle('is-active', b === btn); });
 
-  document.querySelectorAll('input[type="date"]').forEach(function (input) {
-    if (!input.getAttribute('min')) {
-      input.setAttribute('min', todayIso);
-    }
+      if (key === 'friday4') {
+        if (tabActivators['tab-antipasto']) tabActivators['tab-antipasto']();
+        if (fridayDateInput && upcomingFridayIsos[0]) fridayDateInput.value = upcomingFridayIsos[0];
+        if (antiTime) antiTime.value = 'mid-friday';
+        if (antiParty) antiParty.value = '4 Guests';
+        if (antiNotes) {
+          antiNotes.value = 'Friday Piatto Di Antipasto Night table for 4 — cured salumi, aged formaggi & marinated olives.';
+        }
+        showToast('🍷 Pre-filled Friday Antipasto Table for 4');
+      } else if (key === 'hamper') {
+        if (tabActivators['tab-preorder']) tabActivators['tab-preorder']();
+        if (ordTier) ordTier.value = 'Luxury Wicker Hamper';
+        if (ordDate && upcomingFridayIsos[0]) ordDate.value = upcomingFridayIsos[0];
+        if (ordNotes) {
+          ordNotes.value = 'Bespoke Italian Gift Hamper — extra-virgin olive oil, bronze-die pasta, aged cheeses, salumi & sweet cantucci biscotti.';
+        }
+        showToast('🧺 Pre-filled Bespoke Italian Gift Hamper');
+      } else if (key === 'platter') {
+        if (tabActivators['tab-preorder']) tabActivators['tab-preorder']();
+        if (ordTier) ordTier.value = 'Sharing Platter (Entertaining)';
+        if (ordDate && upcomingFridayIsos[0]) ordDate.value = upcomingFridayIsos[0];
+        if (ordNotes) {
+          ordNotes.value = 'Weekend Salumi & Formaggi Grazing Platter — sliced prosciutto, regional salame, aged Italian cheeses & Nocellara olives.';
+        }
+        showToast('🧀 Pre-filled Weekend Salumi & Formaggi Platter');
+      }
+    });
   });
 
-  var fridayChipMount = document.querySelector('[data-friday-chips]');
-  var fridayDateInput = document.getElementById('anti-date');
-
-  if (fridayChipMount && fridayDateInput) {
-    var cursor = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    var daysUntilFriday = (5 - cursor.getDay() + 7) % 7;
-    cursor.setDate(cursor.getDate() + daysUntilFriday);
-
-    var shortMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
-    for (var i = 0; i < 3; i++) {
-      var d = new Date(cursor.getTime());
-      d.setDate(cursor.getDate() + i * 7);
-      var yyyy = d.getFullYear();
-      var mm = String(d.getMonth() + 1).padStart(2, '0');
-      var dd = String(d.getDate()).padStart(2, '0');
-      var iso = yyyy + '-' + mm + '-' + dd;
-      var label = 'Fri ' + d.getDate() + ' ' + shortMonths[d.getMonth()];
-
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'friday-chip';
-      btn.setAttribute('data-iso', iso);
-      btn.textContent = label;
-      btn.addEventListener('click', function (ev) {
-        var chosen = ev.currentTarget.getAttribute('data-iso');
-        fridayDateInput.value = chosen;
-        fridayDateInput.dispatchEvent(new Event('change'));
-      });
-      fridayChipMount.appendChild(btn);
-    }
-  }
-
-  /* 6. Accessible Client-Side Form Validation & Exact Demo Status Message */
+  /* 6. Client-Side Validation & Live Digital Enquiry Ticket */
   var demoForms = document.querySelectorAll('[data-demo-form]');
+
+  function escapeHtml(str) {
+    return String(str || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
 
   function validateField(field) {
     var errId = field.getAttribute('aria-describedby');
@@ -376,22 +644,17 @@
   }
 
   demoForms.forEach(function (form) {
-    var controls = Array.prototype.slice.call(
-      form.querySelectorAll('input, select, textarea')
-    );
+    var controls = Array.prototype.slice.call(form.querySelectorAll('input, select, textarea'));
     var statusBox = form.querySelector('[data-demo-status]');
     var summaryBox = form.querySelector('[data-demo-summary]');
+    var ticketMount = form.querySelector('[data-owner-ticket]');
 
     controls.forEach(function (ctrl) {
       ctrl.addEventListener('input', function () {
-        if (ctrl.getAttribute('aria-invalid') === 'true') {
-          validateField(ctrl);
-        }
+        if (ctrl.getAttribute('aria-invalid') === 'true') validateField(ctrl);
       });
       ctrl.addEventListener('change', function () {
-        if (ctrl.getAttribute('aria-invalid') === 'true') {
-          validateField(ctrl);
-        }
+        if (ctrl.getAttribute('aria-invalid') === 'true') validateField(ctrl);
       });
     });
 
@@ -401,43 +664,98 @@
       var firstBad = null;
       controls.forEach(function (ctrl) {
         var ok = validateField(ctrl);
-        if (!ok && !firstBad) {
-          firstBad = ctrl;
-        }
+        if (!ok && !firstBad) firstBad = ctrl;
       });
 
       if (firstBad) {
-        if (statusBox) {
-          statusBox.hidden = true;
-        }
+        if (statusBox) statusBox.hidden = true;
         firstBad.focus();
         return;
       }
 
       if (statusBox) {
+        var nameInput = form.querySelector('[name="customer_name"]');
+        var phoneInput = form.querySelector('[name="customer_phone"]');
+        var emailInput = form.querySelector('[name="customer_email"]');
+        var dateInput = form.querySelector('[name="preferred_date"], [name="collection_date"]');
+        var timeSelect = form.querySelector('[name="seating_time"]');
+        var detailSelect = form.querySelector('[name="party_size"], [name="order_tier"]');
+        var notesField = form.querySelector('textarea');
+
+        var custName = nameInput ? nameInput.value.trim() : 'Guest';
+        var custPhone = phoneInput ? phoneInput.value.trim() : '';
+        var custEmail = emailInput ? emailInput.value.trim() : '';
+        var dateVal = dateInput ? dateInput.value : '';
+        var timeVal = timeSelect && timeSelect.selectedIndex >= 0
+          ? timeSelect.options[timeSelect.selectedIndex].text
+          : '3 Danby Wynd Counter Collection';
+        var detailVal = detailSelect && detailSelect.selectedIndex >= 0
+          ? detailSelect.options[detailSelect.selectedIndex].text
+          : '';
+        var notesVal = notesField && notesField.value.trim()
+          ? notesField.value.trim()
+          : 'Standard counter preparation — no extra notes.';
+
+        var isFridayForm = Boolean(timeSelect);
+        var refCode = (isFridayForm ? 'BOR-FRI-' : 'BOR-ORD-') + String(Math.floor(1000 + Math.random() * 9000));
+
         if (summaryBox) {
-          var nameInput = form.querySelector('[name="customer_name"]');
-          var dateInput = form.querySelector('[name="preferred_date"], [name="collection_date"]');
-          var detailSelect = form.querySelector('[name="party_size"], [name="order_tier"]');
+          summaryBox.textContent = 'For immediate counter enquiries at 3 Danby Wynd, Yarm, call 01642 791888.';
+        }
 
-          var bits = [];
-          if (nameInput && nameInput.value.trim()) {
-            bits.push('Prepared for ' + nameInput.value.trim());
-          }
-          if (detailSelect && detailSelect.value) {
-            bits.push(
-              detailSelect.options
-                ? detailSelect.options[detailSelect.selectedIndex].text
-                : detailSelect.value
-            );
-          }
-          if (dateInput && dateInput.value) {
-            bits.push('Date: ' + dateInput.value);
+        if (ticketMount) {
+          var plainReceipt = [
+            'Borrelli Delicatessen — 3 Danby Wynd, Yarm TS15 9SF',
+            'Enquiry Ref: ' + refCode,
+            'Customer: ' + custName,
+            'Contact: ' + custPhone + ' · ' + custEmail,
+            'Date / Session: ' + dateVal + ' · ' + timeVal,
+            'Request: ' + detailVal,
+            'Notes: ' + notesVal
+          ].join('\n');
+
+          ticketMount.innerHTML =
+            '<div class="owner-receipt-card__head">' +
+              '<h3 class="owner-receipt-card__title">What Borrelli Delicatessen Receives</h3>' +
+              '<span class="owner-receipt-card__ref">REF · ' + escapeHtml(refCode) + '</span>' +
+            '</div>' +
+            '<dl class="owner-receipt-dl">' +
+              '<div><dt>Customer Name</dt><dd>' + escapeHtml(custName) + '</dd></div>' +
+              '<div><dt>Phone &amp; Email</dt><dd>' + escapeHtml(custPhone) + ' · ' + escapeHtml(custEmail) + '</dd></div>' +
+              '<div><dt>Date &amp; Session</dt><dd>' + escapeHtml(dateVal) + ' · ' + escapeHtml(timeVal) + '</dd></div>' +
+              '<div><dt>Table / Counter Selection</dt><dd>' + escapeHtml(detailVal) + '</dd></div>' +
+              '<div class="owner-receipt-dl__full"><dt>Dietary, Gift Tag &amp; Counter Notes</dt><dd>' + escapeHtml(notesVal) + '</dd></div>' +
+            '</dl>' +
+            '<div class="owner-receipt-actions">' +
+              '<button class="btn btn--receipt-copy" type="button" data-copy-ticket>Copy Summary</button>' +
+              '<button class="btn btn--receipt-reset" type="button" data-reset-demo>Reset Demo</button>' +
+            '</div>';
+
+          var copyBtn = ticketMount.querySelector('[data-copy-ticket]');
+          var resetBtn = ticketMount.querySelector('[data-reset-demo]');
+
+          if (copyBtn) {
+            copyBtn.addEventListener('click', function () {
+              copyToClipboard(plainReceipt, function () {
+                copyBtn.textContent = '✓ Summary Copied';
+                showToast('✓ Enquiry summary copied to clipboard');
+                window.setTimeout(function () {
+                  copyBtn.textContent = 'Copy Summary';
+                }, 2200);
+              });
+            });
           }
 
-          summaryBox.textContent = bits.length
-            ? 'Request preview: ' + bits.join(' · ') + '. For immediate counter enquiries at 3 Danby Wynd, call 01642 791888.'
-            : 'For immediate counter enquiries at 3 Danby Wynd, call 01642 791888.';
+          if (resetBtn) {
+            resetBtn.addEventListener('click', function () {
+              form.reset();
+              controls.forEach(function (c) { c.setAttribute('aria-invalid', 'false'); });
+              statusBox.hidden = true;
+              ticketMount.innerHTML = '';
+              if (controls[0]) controls[0].focus();
+              showToast('↺ Demo form reset');
+            });
+          }
         }
 
         statusBox.hidden = false;
@@ -445,6 +763,25 @@
       }
     });
   });
+
+  /* 7. Smart Form / Footer Auto-Clearance for Mobile Action Bar */
+  var mobileBar = document.querySelector('.mobile-action-bar');
+  if (mobileBar && 'IntersectionObserver' in window) {
+    var watchEls = Array.prototype.slice.call(document.querySelectorAll('form[data-demo-form], footer.site-footer'));
+    if (watchEls.length) {
+      var visMap = new Map();
+      var barObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          visMap.set(entry.target, entry.isIntersecting);
+        });
+        var anyVisible = false;
+        visMap.forEach(function (v) { if (v) anyVisible = true; });
+        mobileBar.classList.toggle('is-dock-hidden', anyVisible);
+      }, { threshold: 0.08 });
+
+      watchEls.forEach(function (el) { barObs.observe(el); });
+    }
+  }
 })();
 
 // === Gallery Inspiration Polish (Awwwards / Godly / Mobbin) ===
@@ -481,9 +818,9 @@
       updateRail();
     }
 
-    // 2. Choreographed Below-the-Fold Scroll Reveals (Godly / SiteInspire)
+    // 2. Choreographed Below-the-Fold Scroll Reveals (never above the fold)
     if (!reduced && 'IntersectionObserver' in window) {
-      var targets = document.querySelectorAll('.counter-card, .hamper-card, .deli-board-card, .wynd-card, .perforated-ticket');
+      var targets = document.querySelectorAll('.deli-card, .perforated-ticket');
       var obs = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
@@ -497,7 +834,7 @@
       var staggerIdx = 0;
       targets.forEach(function (el) {
         var rect = el.getBoundingClientRect();
-        if (rect.top > vh * 0.94) {
+        if (rect.top > vh * 0.96) {
           el.style.setProperty('--reveal-delay', ((staggerIdx % 3) * 55) + 'ms');
           staggerIdx++;
           el.classList.add('reveal-ready');
@@ -505,7 +842,6 @@
         }
       });
 
-      // Safety fallback on hash jump so targeted sections reveal immediately
       window.addEventListener('hashchange', function () {
         document.querySelectorAll('.reveal-ready:not(.is-revealed)').forEach(function (el) {
           if (el.getBoundingClientRect().top < window.innerHeight * 1.1) {
@@ -515,7 +851,7 @@
       });
     }
 
-    // 3. Mobbin Smart Date Defaults + 1-Tap Quick Date Chips
+    // 3. Mobbin Quick Date Chips for Collection Date
     function toIso(d) {
       var m = String(d.getMonth() + 1).padStart(2, '0');
       var day = String(d.getDate()).padStart(2, '0');
@@ -530,38 +866,23 @@
     var today = new Date();
     var todayIso = toIso(today);
     document.querySelectorAll('input[type="date"]').forEach(function (input) {
-      if (!input.min) {
-        input.min = todayIso;
-      }
+      if (!input.min) input.min = todayIso;
       var fieldWrap = input.parentElement;
       if (!fieldWrap || fieldWrap.querySelector('[data-friday-chips]') || fieldWrap.querySelector('.quick-date-chips')) {
         return;
       }
-      var isReturn = input.id === 'return-date';
       var chipRow = document.createElement('div');
       chipRow.className = 'quick-date-chips';
       chipRow.setAttribute('aria-label', 'Quick date options');
 
-      var presets = [];
-      if (isReturn) {
-        presets = [
-          { label: 'Same Day', calc: function () { var o = document.getElementById('outbound-date'); return (o && o.value) ? o.value : todayIso; } },
-          { label: '+2 Days', calc: function () {
-            var o = document.getElementById('outbound-date');
-            var base = (o && o.value) ? new Date(o.value + 'T12:00:00') : today;
-            return toIso(new Date(base.getFullYear(), base.getMonth(), base.getDate() + 2));
-          } }
-        ];
-      } else {
-        var tmrw = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
-        var fri = today.getDay() === 5 ? today : nextWeekday(today, 5);
-        var sat = today.getDay() === 6 ? today : nextWeekday(today, 6);
-        presets = [
-          { label: 'Tomorrow', iso: toIso(tmrw) },
-          { label: (today.getDay() === 5 ? 'Tonight (Fri)' : 'This Friday'), iso: toIso(fri) },
-          { label: (today.getDay() === 6 ? 'Today (Sat)' : 'This Saturday'), iso: toIso(sat) }
-        ];
-      }
+      var tmrw = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+      var fri = today.getDay() === 5 ? today : nextWeekday(today, 5);
+      var sat = today.getDay() === 6 ? today : nextWeekday(today, 6);
+      var presets = [
+        { label: 'Tomorrow', iso: toIso(tmrw) },
+        { label: (today.getDay() === 5 ? 'Tonight (Fri)' : 'This Friday'), iso: toIso(fri) },
+        { label: (today.getDay() === 6 ? 'Today (Sat)' : 'This Saturday'), iso: toIso(sat) }
+      ];
 
       presets.forEach(function (p) {
         var btn = document.createElement('button');
@@ -569,8 +890,7 @@
         btn.className = 'quick-date-chip';
         btn.textContent = p.label;
         btn.addEventListener('click', function () {
-          var val = p.calc ? p.calc() : p.iso;
-          input.value = val;
+          input.value = p.iso;
           chipRow.querySelectorAll('.quick-date-chip').forEach(function (c) { c.classList.remove('is-selected'); });
           btn.classList.add('is-selected');
           input.dispatchEvent(new Event('change', { bubbles: true }));
@@ -582,22 +902,19 @@
       input.insertAdjacentElement('afterend', chipRow);
     });
 
-  // Live factual Friday Antipasto Night counter ticket indicator
-  (function () {
+    // Live factual Friday Antipasto Night counter ticket indicator
     var kicker = document.querySelector('.perforated-ticket__kicker');
-    if (!kicker) return;
-    var now = new Date();
-    var day = now.getDay();
-    if (day === 5) {
-      kicker.textContent = '✦ Tonight · Every Friday Evening';
-    } else {
-      var daysUntilFri = (5 - day + 7) % 7 || 7;
-      var nextFri = new Date(now.getFullYear(), now.getMonth(), now.getDate() + daysUntilFri);
-      var fmt = nextFri.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
-      kicker.textContent = 'Every Friday · Next: Fri ' + fmt;
+    if (kicker) {
+      var day = today.getDay();
+      if (day === 5) {
+        kicker.textContent = '✦ Tonight · Every Friday Evening';
+      } else {
+        var daysUntilFri = (5 - day + 7) % 7 || 7;
+        var nextFri = new Date(today.getFullYear(), today.getMonth(), today.getDate() + daysUntilFri);
+        var fmt = nextFri.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+        kicker.textContent = 'Every Friday · Next: Fri ' + fmt;
+      }
     }
-  })();
-
   }
 
   if (document.readyState === 'loading') {

@@ -74,6 +74,22 @@
 
     <section class="section" aria-label="Friday table booking and hamper pre-order forms">
       <div class="container">
+        <!-- Quick 1-Tap Counter Presets -->
+        <div class="counter-presets-box" data-booking-presets>
+          <span class="counter-step-label">Quick 1-Tap Counter Presets</span>
+          <div class="preset-pills-row" role="group" aria-label="One-tap booking and pre-order presets">
+            <button class="preset-pill" type="button" data-order-preset="friday4">
+              🍷 Friday Antipasto Night Table for 4
+            </button>
+            <button class="preset-pill" type="button" data-order-preset="hamper">
+              🧺 Bespoke Italian Gift Hamper
+            </button>
+            <button class="preset-pill" type="button" data-order-preset="platter">
+              🧀 Weekend Salumi &amp; Formaggi Platter
+            </button>
+          </div>
+        </div>
+
         <!-- Accessible Dual Form Switcher -->
         <div class="pill-tablist" role="tablist" aria-label="Choose booking or pre-order">
           <button
@@ -237,6 +253,7 @@
               <div class="demo-status-panel" data-demo-status role="status" aria-live="polite" tabindex="-1" hidden>
                 <p class="demo-status-panel__headline">Demo only – in the live site this would go straight to Borrelli Delicatessen.</p>
                 <p class="demo-status-panel__summary" data-demo-summary></p>
+                <div class="owner-receipt-card" data-owner-ticket></div>
               </div>
             </form>
           </div>
@@ -362,6 +379,7 @@
               <div class="demo-status-panel" data-demo-status role="status" aria-live="polite" tabindex="-1" hidden>
                 <p class="demo-status-panel__headline">Demo only – in the live site this would go straight to Borrelli Delicatessen.</p>
                 <p class="demo-status-panel__summary" data-demo-summary></p>
+                <div class="owner-receipt-card" data-owner-ticket></div>
               </div>
             </form>
           </div>
@@ -406,11 +424,14 @@
 
       <div class="footer-disclaimers">
         <p><strong>Concept Disclaimer:</strong> Unsolicited concept website created for demonstration purposes — not the official website of Borrelli Delicatessen. All bracketed items are illustrative placeholders awaiting owner confirmation.</p>
-        <p><strong>Illustrative Image Credit:</strong> Food platter and wicker hamper images displayed across this concept site are AI-generated illustrative visuals created solely to demonstrate layout and atmosphere, and do not depict actual shop stock or dishes.</p>
+        <p><strong>Illustrative Image Credit:</strong> Antipasto platter, pressed panino and wicker gift hamper photographs displayed across this concept site are AI-generated illustrative visuals created solely to demonstrate layout and atmosphere, and do not depict actual shop stock or dishes.</p>
         <p class="footer-credit">Design by Mark Aszkenasy</p>
       </div>
     </div>
   </footer>
+
+  <!-- Non-blocking Micro-Toast -->
+  <div class="borrelli-toast" id="borrelli-toast" role="status" aria-live="polite" aria-atomic="true"></div>
 
   <nav class="mobile-action-bar" aria-label="Quick mobile actions">
     <a class="mobile-action-bar__btn" href="tel:01642791888">Call</a>

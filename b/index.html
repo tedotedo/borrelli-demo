@@ -26,8 +26,9 @@
     </div>
   </div>
 
-  <!-- Candlelit Salumeria Zine Masthead -->
+  <!-- Candlelit Salumeria Zine Masthead + 2.5px Brand Scroll-Progress Hairline -->
   <header class="zine-header">
+    <div class="scroll-progress-rail" data-scroll-progress aria-hidden="true"></div>
     <div class="container zine-header__inner">
       <a class="zine-brand" href="#top" aria-label="Borrelli Delicatessen home">
         <img class="zine-brand__stamp" src="../images/logo-mark.svg" width="42" height="42" alt="">
@@ -52,7 +53,7 @@
   </header>
 
   <main id="main-content">
-    <!-- Candlelit Editorial Hero + Live Calendar-Aware Friday Badge -->
+    <!-- Candlelit Editorial Hero + Above-the-Fold Mobile Visual Spread -->
     <section class="zine-hero" id="top" aria-labelledby="zine-hero-title">
       <div class="zine-hero__ambient" aria-hidden="true"></div>
 
@@ -85,18 +86,31 @@
           </p>
         </div>
 
-        <!-- Editorial Zine Spread Visuals -->
+        <!-- Editorial Zine Spread Visuals (ordered right beneath H1 on mobile, 2-col right on desktop) -->
         <div class="zine-spread">
           <figure class="zine-plate-card zine-plate-card--main">
-            <div class="zine-plate-card__img">
-              <img
-                src="../images/hero.jpg"
-                width="1440"
-                height="803"
-                alt="Candlelit Italian Piatto di Antipasto sharing board with cured meats, cheeses, olives and rustic bread"
-              >
-              <span class="zine-illus-pill">Illustrative image</span>
-            </div>
+            <button
+              class="zine-photo-trigger"
+              type="button"
+              data-lightbox-src="../images/hero.jpg"
+              data-lightbox-alt="Candlelit Italian Piatto di Antipasto sharing board with cured meats, cheeses, olives and rustic bread"
+              data-lightbox-title="Friday Drop · “Piatto Di Antipasto Night”"
+              data-lightbox-caption="Generous wooden boards of cured prosciutto, regional salame, burrata, aged Parmigiano, Nocellara olives and rosemary focaccia poured alongside Italian wines every Friday evening."
+              data-lightbox-mode="friday"
+              data-lightbox-cta="Reserve a Friday Table →"
+              aria-label="Enlarge illustrative photo of Friday Piatto Di Antipasto sharing board"
+            >
+              <span class="zine-plate-card__img">
+                <img
+                  src="../images/hero.jpg"
+                  width="1440"
+                  height="803"
+                  alt="Candlelit Italian Piatto di Antipasto sharing board with cured meats, cheeses, olives and rustic bread"
+                >
+                <span class="zine-illus-pill">Illustrative image</span>
+                <span class="zine-zoom-pill" aria-hidden="true">🔍 View</span>
+              </span>
+            </button>
             <figcaption>
               <span><strong>Friday Drop:</strong> “Piatto Di Antipasto Night” sharing board</span>
               <span>Illustrative image</span>
@@ -104,17 +118,29 @@
           </figure>
 
           <figure class="zine-plate-card zine-plate-card--secondary">
-            <div class="zine-plate-card__img zine-plate-card__img--compact">
-              <img
-                src="../images/feature.jpg"
-                width="1200"
-                height="896"
-                alt="Traditional wicker gift hamper filled with Italian olive oil, pasta, preserves and delicatessen treats"
-              >
-              <span class="zine-illus-pill zine-illus-pill--sm">Illustrative image</span>
-            </div>
+            <button
+              class="zine-photo-trigger"
+              type="button"
+              data-lightbox-src="../images/detail-2.jpg"
+              data-lightbox-alt="Freshly pressed prosciutto, mozzarella and basil ciabatta panino on butcher paper beside an Italian espresso"
+              data-lightbox-title="Daytime Caffetteria · Pressed Panini &amp; Espresso"
+              data-lightbox-caption="Warm ciabatta panini filled straight from the salumeria counter with prosciutto, melted mozzarella, roasted tomatoes and fresh basil beside rich Italian espresso."
+              data-lightbox-mode="preorder"
+              data-lightbox-cta="Pre-Order from the Counter →"
+              aria-label="Enlarge illustrative photo of freshly pressed panino and espresso"
+            >
+              <span class="zine-plate-card__img zine-plate-card__img--compact">
+                <img
+                  src="../images/detail-2.jpg"
+                  width="1200"
+                  height="896"
+                  alt="Freshly pressed prosciutto, mozzarella and basil ciabatta panino on butcher paper beside an Italian espresso"
+                >
+                <span class="zine-illus-pill zine-illus-pill--sm">Illustrative image</span>
+              </span>
+            </button>
             <figcaption>
-              <strong>Bespoke Gifting:</strong> Hand-packed wicker hampers at 3 Danby Wynd · <em>Illustrative image</em>
+              <strong>Daytime Café:</strong> Pressed ciabatta panino &amp; morning espresso at 3 Danby Wynd · <em>Illustrative image</em>
             </figcaption>
           </figure>
         </div>
@@ -155,92 +181,150 @@
       </div>
     </div>
 
-    <!-- Horizontal Touch-Snap 5-Card Counter Showcase -->
+    <!-- Horizontal Touch-Snap 4-Card Editorial Counter Showcase (Zero Duplicate Images) -->
     <section class="zine-section" id="showcase" aria-labelledby="showcase-heading">
       <div class="container">
         <div class="zine-section__head">
           <div>
-            <p class="zine-kicker">Salumeria &amp; Café Folio · 01–05</p>
+            <p class="zine-kicker">Salumeria &amp; Café Folio · 01–04</p>
             <h2 class="zine-h2" id="showcase-heading">Swipe the Danby Wynd Counter</h2>
           </div>
 
           <div class="showcase-controls" aria-label="Scroll counter showcase">
-            <span class="showcase-count" data-showcase-count aria-live="polite">01 / 05</span>
+            <span class="showcase-count" data-showcase-count aria-live="polite">01 / 04</span>
             <button class="showcase-btn" type="button" data-showcase-prev aria-label="Previous counter card">←</button>
             <button class="showcase-btn" type="button" data-showcase-next aria-label="Next counter card">→</button>
           </div>
         </div>
 
         <div class="counter-reel" data-counter-reel tabindex="0" role="region" aria-label="Borrelli counter showcase">
-          <!-- 01 Artisan Salumi -->
-          <article class="counter-zine-card" data-showcase-card>
-            <div class="counter-zine-card__meta">
-              <span class="counter-zine-card__num">01 · Salumeria</span>
-              <span class="counter-zine-card__pill">Sliced to Order</span>
+          <!-- 01 Salumi, Formaggi & Friday Antipasto (hero.jpg) -->
+          <article class="counter-zine-card counter-zine-card--terracotta" data-showcase-card>
+            <div>
+              <button
+                class="zine-photo-trigger reel-card-media"
+                type="button"
+                data-lightbox-src="../images/hero.jpg"
+                data-lightbox-alt="Candlelit Italian Piatto di Antipasto sharing board with cured meats, cheeses, olives and rustic bread"
+                data-lightbox-title="01 · Salumi, Formaggi &amp; Friday Antipasto"
+                data-lightbox-caption="Prosciutto, regional Italian salame, burrata and aged formaggi sliced to order by day and served by candlelight every Friday evening."
+                data-lightbox-mode="friday"
+                data-lightbox-cta="Book Friday Antipasto Table →"
+                aria-label="Enlarge photo of Salumi, Formaggi and Friday Antipasto board"
+              >
+                <img src="../images/hero.jpg" width="1440" height="803" alt="Candlelit Italian Piatto di Antipasto sharing board with cured meats, cheeses, olives and rustic bread">
+                <span class="zine-illus-pill zine-illus-pill--sm">Illustrative image</span>
+              </button>
+              <div class="counter-zine-card__meta">
+                <span class="counter-zine-card__num">01 · Salumeria &amp; Venerdì</span>
+                <span class="counter-zine-card__pill">Sliced to Order</span>
+              </div>
+              <h3>Salumi, Formaggi &amp; Friday Night</h3>
+              <p>
+                Paper-thin prosciutto, regional salame and aged Italian cheeses cut by weight — and served every Friday at <em>Piatto Di Antipasto Night</em>.
+              </p>
+              <p><span class="ph">[Counter &amp; Friday sitting prices – owner to confirm]</span></p>
             </div>
-            <h3>Artisan Salumi</h3>
-            <p>
-              Prosciutto, regional Italian salame and cured charcuterie sliced paper-thin to order for weekend grazing or home cooking.
-            </p>
-            <p><span class="ph">[Salumi range &amp; price per 100g – owner to confirm]</span></p>
-            <a class="card-jump-link" href="#composer">Add Salumi to Board ↓</a>
+            <a class="card-jump-link" href="#reserve" data-open-mode="friday">Book a Friday Table ↓</a>
           </article>
 
-          <!-- 02 Formaggi -->
+          <!-- 02 Fresh Panini & Espresso (detail-2.jpg) -->
           <article class="counter-zine-card" data-showcase-card>
-            <div class="counter-zine-card__meta">
-              <span class="counter-zine-card__num">02 · Formaggi</span>
-              <span class="counter-zine-card__pill">Cut by Weight</span>
+            <div>
+              <button
+                class="zine-photo-trigger reel-card-media"
+                type="button"
+                data-lightbox-src="../images/detail-2.jpg"
+                data-lightbox-alt="Freshly pressed prosciutto, mozzarella and basil ciabatta panino on butcher paper beside an Italian espresso"
+                data-lightbox-title="02 · Daytime Caffetteria &amp; Panini"
+                data-lightbox-caption="Warm pressed ciabatta panini oozing melted mozzarella, prosciutto, sweet tomatoes and basil beside Italian espresso."
+                data-lightbox-mode="preorder"
+                data-lightbox-cta="Enquire or Pre-Order →"
+                aria-label="Enlarge photo of freshly pressed panino and espresso"
+              >
+                <img src="../images/detail-2.jpg" width="1200" height="896" alt="Freshly pressed prosciutto, mozzarella and basil ciabatta panino on butcher paper beside an Italian espresso">
+                <span class="zine-illus-pill zine-illus-pill--sm">Illustrative image</span>
+              </button>
+              <div class="counter-zine-card__meta">
+                <span class="counter-zine-card__num">02 · Caffetteria</span>
+                <span class="counter-zine-card__pill">Daytime Café</span>
+              </div>
+              <h3>Pressed Panini &amp; Espresso</h3>
+              <p>
+                Warm ciabatta panini, filled focaccia, rich Italian espresso, cannoli and biscotti — tucked peacefully off Yarm High Street.
+              </p>
+              <p><span class="ph">[Daytime café menu &amp; prices – owner to confirm]</span></p>
             </div>
-            <h3>Aged Formaggi</h3>
-            <p>
-              Fine Italian and continental cheeses curated along the chilled counter alongside marinated olives and sun-blushed antipasti.
-            </p>
-            <p><span class="ph">[Cheese counter &amp; prices – owner to confirm]</span></p>
-            <a class="card-jump-link" href="#composer">Add Formaggi to Board ↓</a>
-          </article>
-
-          <!-- 03 Fresh Panini -->
-          <article class="counter-zine-card" data-showcase-card>
-            <div class="counter-zine-card__meta">
-              <span class="counter-zine-card__num">03 · Caffetteria</span>
-              <span class="counter-zine-card__pill">Daytime Café</span>
-            </div>
-            <h3>Fresh Panini &amp; Espresso</h3>
-            <p>
-              Warm pressed panini, filled focaccia, rich Italian espresso, cannoli and biscotti — tucked peacefully off Yarm High Street.
-            </p>
-            <p><span class="ph">[Daytime café menu &amp; prices – owner to confirm]</span></p>
             <a class="card-jump-link" href="tel:01642791888">Call Café · 01642 791888</a>
           </article>
 
-          <!-- 04 Bespoke Hampers -->
+          <!-- 03 Terracotta-Ribbon Pantry Hampers (detail-1.jpg) -->
           <article class="counter-zine-card counter-zine-card--basil" data-showcase-card>
-            <div class="counter-zine-card__meta">
-              <span class="counter-zine-card__num">04 · Regali</span>
-              <span class="counter-zine-card__pill">Hand-Packed</span>
+            <div>
+              <button
+                class="zine-photo-trigger reel-card-media"
+                type="button"
+                data-lightbox-src="../images/detail-1.jpg"
+                data-lightbox-alt="Artisanal wicker Italian gift hamper tied with a terracotta ribbon, filled with olive oil, bronze-die pasta and marinated antipasti"
+                data-lightbox-title="03 · Terracotta-Ribbon Pantry Gift Baskets"
+                data-lightbox-caption="Bespoke wicker gift baskets tied with terracotta ribbon and packed with golden extra-virgin olive oil, bronze-die pastas and antipasti jars."
+                data-lightbox-mode="preorder"
+                data-lightbox-cta="Pre-Order a Gift Hamper →"
+                aria-label="Enlarge photo of terracotta-ribbon Italian gift basket"
+              >
+                <img src="../images/detail-1.jpg" width="1200" height="896" alt="Artisanal wicker Italian gift hamper tied with a terracotta ribbon, filled with olive oil, bronze-die pasta and marinated antipasti">
+                <span class="zine-illus-pill zine-illus-pill--sm">Illustrative image</span>
+              </button>
+              <div class="counter-zine-card__meta">
+                <span class="counter-zine-card__num">03 · Dispensa &amp; Regali</span>
+                <span class="counter-zine-card__pill">Made to Order</span>
+              </div>
+              <h3>Bespoke Pantry Hampers</h3>
+              <p>
+                Ribbon-tied wicker baskets brimming with extra-virgin olive oil, bronze-die pasta shapes and marinated antipasti jars.
+              </p>
+              <p><span class="ph">[Hamper tiers &amp; prices – owner to confirm]</span></p>
             </div>
-            <h3>Bespoke Hampers</h3>
-            <p>
-              Wicker gift hampers, seasonal Christmas boxes and corporate thank-yous filled with olive oils, bronze-die pasta and sweet treats.
-            </p>
-            <p><span class="ph">[Hamper sizes &amp; prices – owner to confirm]</span></p>
-            <a class="card-jump-link" href="#composer">Build a Gift Hamper ↓</a>
+            <a class="card-jump-link" href="#composer">Compose a Gift Hamper ↓</a>
           </article>
 
-          <!-- 05 Friday Antipasto Night -->
-          <article class="counter-zine-card counter-zine-card--terracotta" data-showcase-card>
-            <div class="counter-zine-card__meta">
-              <span class="counter-zine-card__num">05 · Venerdì Sera</span>
-              <span class="counter-zine-card__pill">Weekly Event</span>
+          <!-- 04 Seasonal Hinged Wicker Hampers (feature.jpg) -->
+          <article class="counter-zine-card" data-showcase-card>
+            <div>
+              <button
+                class="zine-photo-trigger reel-card-media"
+                type="button"
+                data-lightbox-src="../images/feature.jpg"
+                data-lightbox-alt="Traditional hinged wicker gift hamper filled with Italian olive oil, artisan pasta, pesto jars and almond biscotti"
+                data-lightbox-title="04 · Luxury Hinged Wicker Hampers"
+                data-lightbox-caption="Hand-packed hinged wicker hampers for birthdays, corporate thank-yous and Christmas celebrations at 3 Danby Wynd."
+                data-lightbox-mode="preorder"
+                data-lightbox-cta="Pre-Order Luxury Hamper →"
+                aria-label="Enlarge photo of luxury hinged wicker hamper"
+              >
+                <img src="../images/feature.jpg" width="1200" height="896" alt="Traditional hinged wicker gift hamper filled with Italian olive oil, artisan pasta, pesto jars and almond biscotti">
+                <span class="zine-illus-pill zine-illus-pill--sm">Illustrative image</span>
+              </button>
+              <div class="counter-zine-card__meta">
+                <span class="counter-zine-card__num">04 · Cesti Artigianali</span>
+                <span class="counter-zine-card__pill">Hand-Packed</span>
+              </div>
+              <h3>Seasonal &amp; Corporate Hampers</h3>
+              <p>
+                Traditional hinged wicker hampers packed with craft olive oils, tagliatelle nests, pesto and almond cantucci biscotti.
+              </p>
+              <p><span class="ph">[Seasonal &amp; corporate options – owner to confirm]</span></p>
             </div>
-            <h3>Friday Antipasto Night</h3>
-            <p>
-              Every Friday evening, Borrelli welcomes guests down Danby Wynd for our signature <em>“Piatto Di Antipasto Night”</em>.
-            </p>
-            <p><span class="ph">[Sitting times &amp; prices – owner to confirm]</span></p>
-            <a class="card-jump-link" href="#reserve" data-open-mode="friday">Book a Friday Table ↓</a>
+            <a class="card-jump-link" href="#reserve" data-open-mode="preorder">Pre-Order for Collection ↓</a>
           </article>
+        </div>
+
+        <!-- Active Snap Dot Indicators -->
+        <div class="showcase-dots" data-showcase-dots aria-label="Choose counter showcase slide">
+          <button class="showcase-dot is-active" type="button" data-showcase-dot="0" aria-label="Slide 1 of 4" aria-current="true"><span></span></button>
+          <button class="showcase-dot" type="button" data-showcase-dot="1" aria-label="Slide 2 of 4"><span></span></button>
+          <button class="showcase-dot" type="button" data-showcase-dot="2" aria-label="Slide 3 of 4"><span></span></button>
+          <button class="showcase-dot" type="button" data-showcase-dot="3" aria-label="Slide 4 of 4"><span></span></button>
         </div>
       </div>
     </section>
@@ -254,8 +338,24 @@
               <p class="zine-kicker">Interactive Salumeria Slip</p>
               <h2 class="zine-h2" id="composer-heading">Tap-to-Build Antipasto &amp; Hamper Composer</h2>
               <p class="zine-sub">
-                Choose your format and tap your favourite Danby Wynd counter ingredients — then send your slip straight into the pre-order desk below. <span class="ph">[Opening hours &amp; prices – owner to confirm]</span>
+                Try a 1-tap preset or toggle your favourite Danby Wynd counter ingredients — then load your slip straight into the desk below. <span class="ph">[Opening hours &amp; prices – owner to confirm]</span>
               </p>
+            </div>
+          </div>
+
+          <!-- 1-Tap Counter Presets -->
+          <div class="composer-step">
+            <span class="composer-step__label">Quick 1-Tap Counter Presets</span>
+            <div class="zine-presets-row" role="group" aria-label="One-tap counter presets">
+              <button class="zine-preset-btn" type="button" data-b-preset="friday4">
+                🍷 Friday Antipasto Night Table for 4
+              </button>
+              <button class="zine-preset-btn" type="button" data-b-preset="hamper">
+                🧺 Bespoke Italian Gift Hamper
+              </button>
+              <button class="zine-preset-btn is-active" type="button" data-b-preset="platter">
+                🧀 Weekend Salumi &amp; Formaggi Platter
+              </button>
             </div>
           </div>
 
@@ -276,27 +376,45 @@
           <div class="composer-step">
             <span class="composer-step__label">2. Tap Counter Ingredients to Pack</span>
             <div class="composer-chips-wrap" role="group" aria-label="Toggle counter items">
-              <button class="ing-chip is-selected" type="button" data-ing-chip="Cured Italian Salumi" aria-pressed="true">
+              <button class="ing-chip is-selected" type="button" data-ing-chip="Cured Italian Salumi" data-cat="salumi" aria-pressed="true">
                 <span class="ing-chip__mark" aria-hidden="true">✓</span> Cured Italian Salumi
               </button>
-              <button class="ing-chip is-selected" type="button" data-ing-chip="Aged Italian Formaggi" aria-pressed="true">
+              <button class="ing-chip is-selected" type="button" data-ing-chip="Aged Italian Formaggi" data-cat="formaggi" aria-pressed="true">
                 <span class="ing-chip__mark" aria-hidden="true">✓</span> Aged Italian Formaggi
               </button>
-              <button class="ing-chip is-selected" type="button" data-ing-chip="Nocellara Olives &amp; Antipasti" aria-pressed="true">
+              <button class="ing-chip is-selected" type="button" data-ing-chip="Nocellara Olives &amp; Antipasti" data-cat="antipasti" aria-pressed="true">
                 <span class="ing-chip__mark" aria-hidden="true">✓</span> Nocellara Olives &amp; Antipasti
               </button>
-              <button class="ing-chip is-selected" type="button" data-ing-chip="Fresh Focaccia &amp; Grissini" aria-pressed="true">
+              <button class="ing-chip is-selected" type="button" data-ing-chip="Fresh Focaccia &amp; Grissini" data-cat="antipasti" aria-pressed="true">
                 <span class="ing-chip__mark" aria-hidden="true">✓</span> Fresh Focaccia &amp; Grissini
               </button>
-              <button class="ing-chip" type="button" data-ing-chip="Extra Virgin Olive Oil &amp; Balsamic" aria-pressed="false">
+              <button class="ing-chip" type="button" data-ing-chip="Extra Virgin Olive Oil &amp; Balsamic" data-cat="antipasti" aria-pressed="false">
                 <span class="ing-chip__mark" aria-hidden="true">+</span> Extra Virgin Olive Oil &amp; Balsamic
               </button>
-              <button class="ing-chip" type="button" data-ing-chip="Bronze-Die Pasta &amp; Pantry Jars" aria-pressed="false">
+              <button class="ing-chip" type="button" data-ing-chip="Bronze-Die Pasta &amp; Pantry Jars" data-cat="antipasti" aria-pressed="false">
                 <span class="ing-chip__mark" aria-hidden="true">+</span> Bronze-Die Pasta &amp; Pantry Jars
               </button>
-              <button class="ing-chip" type="button" data-ing-chip="Cannoli &amp; Sweet Biscotti" aria-pressed="false">
+              <button class="ing-chip" type="button" data-ing-chip="Cannoli &amp; Sweet Biscotti" data-cat="antipasti" aria-pressed="false">
                 <span class="ing-chip__mark" aria-hidden="true">+</span> Cannoli &amp; Sweet Biscotti
               </button>
+            </div>
+          </div>
+
+          <!-- Live Counter Balance Meter -->
+          <div class="zine-balance" data-b-balance aria-label="Counter balance meter">
+            <div class="zine-balance__head">
+              <span class="zine-balance__label">Counter Balance Meter</span>
+              <span class="zine-balance__verdict" data-b-verdict>Classic Salumeria Trio Balanced</span>
+            </div>
+            <div class="zine-balance__bar" aria-hidden="true">
+              <div class="zine-balance__seg zine-balance__seg--salumi" data-b-seg-salumi style="width: 25%"></div>
+              <div class="zine-balance__seg zine-balance__seg--formaggi" data-b-seg-formaggi style="width: 25%"></div>
+              <div class="zine-balance__seg zine-balance__seg--antipasti" data-b-seg-antipasti style="width: 50%"></div>
+            </div>
+            <div class="zine-balance__legend">
+              <span data-b-leg-salumi><i class="b-dot b-dot--salumi"></i> Salumi: ✓</span>
+              <span data-b-leg-formaggi><i class="b-dot b-dot--formaggi"></i> Formaggi: ✓</span>
+              <span data-b-leg-antipasti><i class="b-dot b-dot--antipasti"></i> Antipasti &amp; Pantry: 2</span>
             </div>
           </div>
 
@@ -485,6 +603,7 @@
             <div class="zine-demo-confirm" data-demo-status role="status" aria-live="polite" tabindex="-1" hidden>
               <p class="zine-demo-confirm__title">Demo only – in the live site this would go straight to Borrelli Delicatessen.</p>
               <p class="zine-demo-confirm__summary" data-demo-summary></p>
+              <div class="zine-owner-ticket" data-owner-ticket></div>
             </div>
           </form>
         </div>
@@ -558,13 +677,36 @@
 
       <div class="zine-footer__legal">
         <p><strong>Concept Disclaimer:</strong> Concept design by Mark Aszkenasy – not the official website of Borrelli Delicatessen. All bracketed items are honest placeholders awaiting owner confirmation.</p>
-        <p><strong>Illustrative Image Credit:</strong> Antipasto board and wicker hamper images displayed in this concept are AI-generated illustrative visuals created solely to preview layout and atmosphere, and do not depict actual shop stock or dishes.</p>
+        <p><strong>Illustrative Image Credit:</strong> Antipasto board, pressed panino and wicker hamper photographs displayed in this concept are AI-generated illustrative visuals created solely to preview layout and atmosphere, and do not depict actual shop stock or dishes.</p>
         <p class="zine-footer__sig">Design by Mark Aszkenasy</p>
       </div>
     </div>
   </footer>
 
-  <!-- Floating Mobile Dock -->
+  <!-- Accessible Native Photo Lightbox -->
+  <dialog class="borrelli-lightbox" id="borrelli-lightbox" aria-labelledby="b-lb-title">
+    <div class="borrelli-lightbox__inner">
+      <div class="borrelli-lightbox__top">
+        <span class="borrelli-lightbox__tag">Illustrative image · 3 Danby Wynd</span>
+        <button class="borrelli-lightbox__close" type="button" data-lightbox-close aria-label="Close photo preview">✕</button>
+      </div>
+      <div class="borrelli-lightbox__media">
+        <img id="b-lb-img" src="../images/hero.jpg" alt="">
+      </div>
+      <div class="borrelli-lightbox__body">
+        <div class="borrelli-lightbox__copy">
+          <h3 class="borrelli-lightbox__title" id="b-lb-title">Friday Drop · “Piatto Di Antipasto Night”</h3>
+          <p class="borrelli-lightbox__caption" id="b-lb-caption"></p>
+        </div>
+        <button class="btn btn--terracotta" type="button" id="b-lb-cta" data-lb-mode="friday">Reserve a Friday Table →</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Non-blocking Micro-Toast -->
+  <div class="borrelli-toast" id="borrelli-toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Frosted Glass Safe-Area Floating Mobile Dock -->
   <nav class="zine-mobile-dock" aria-label="Quick mobile actions">
     <a class="zine-mobile-dock__btn" href="tel:01642791888">Call</a>
     <a class="zine-mobile-dock__btn" href="#composer">Composer</a>
