@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#1E5B3A">
+  <title>Borrelli Delicatessen | Concept D — Build Your Board (3 Danby Wynd, Yarm)</title>
+  <meta name="description" content="Concept D for Borrelli Delicatessen at 3 Danby Wynd, Yarm: tap salumi, cheese and antipasti onto a board, send it to the counter, and book Friday Piatto Di Antipasto Night.">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Persistent Top Concept Banner + [A] [B] [C] [D] Switcher -->
+  <div class="concept-banner" role="region" aria-label="Concept website notice">
+    <div class="concept-banner__inner">
+      <p>Concept design by Mark Aszkenasy – not the official website of Borrelli Delicatessen.</p>
+      <nav class="concept-switcher" aria-label="Switch concept version">
+        <span class="concept-switcher__label">Concept:</span>
+        <a class="concept-switcher__pill" href="../index.html"><span>A</span></a>
+        <a class="concept-switcher__pill" href="../b/index.html"><span>B</span></a>
+        <a class="concept-switcher__pill" href="../c/index.html"><span>C</span></a>
+        <a class="concept-switcher__pill is-active" href="index.html" aria-current="page"><span>D</span></a>
+      </nav>
+    </div>
+  </div>
+
+  <header class="site-head">
+    <div class="wrap site-head__inner">
+      <a class="brand" href="#top">
+        <img src="../images/logo-mark.svg" width="36" height="36" alt="">
+        <span>
+          <span class="brand__name">Borrelli</span>
+          <span class="brand__meta">Delicatessen · 3 Danby Wynd</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Sections"><a href="#board">Build a board</a><a href="#friday">Friday night</a><a href="#hampers">Hampers</a><a href="#visit">Visit</a></nav>
+      <a class="btn btn--hi site-head__cta" href="#board">Build a board</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="label-hero" id="top" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div class="tin">
+          <p class="tin__arc">Delicatessen · Yarm</p>
+          <h1 class="tin__name" id="hero-title">Borrelli</h1>
+          <p class="tin__rule"><span>Salumi</span><i></i><span>Formaggi</span><i></i><span>Antipasti</span></p>
+          <p class="tin__line">Build your own sharing board,<br>then collect it from the wynd.</p>
+          <a class="btn btn--hi" href="#board">Start your board</a>
+          <p class="tin__foot">3 Danby Wynd · TS15 9SF · 01642 791888</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Board builder -->
+    <section class="sec builder" id="board" aria-labelledby="board-title">
+      <div class="wrap builder__grid">
+        <div>
+          <p class="eyebrow">Tap to add</p>
+          <h2 class="section-title" id="board-title">Build your board</h2>
+          <div class="pick" data-pick></div>
+          <p class="builder__note"><span class="ph">[Illustrative counter items – owner to confirm range &amp; prices]</span></p>
+        </div>
+
+        <div class="builder__side">
+          <div class="wood" aria-hidden="true">
+            <div class="wood__handle"></div>
+            <ul class="wood__grid" data-wood></ul>
+            <p class="wood__empty" data-wood-empty>Your board is empty.<br>Tap something delicious.</p>
+          </div>
+          <div class="tally" aria-live="polite">
+            <p class="tally__size"><span data-tally-count>0</span> on the board · <b data-tally-size>Start adding</b></p>
+            <p class="tally__price"><span class="ph">[Board sizes &amp; prices – owner to confirm]</span></p>
+            <ul class="tally__list" data-tally-list></ul>
+          </div>
+
+          <form class="form send" data-send novalidate>
+            <div class="form__row form__row--half">
+              <div><label for="s-date">Collect on</label><input id="s-date" name="date" type="date" required></div>
+              <div><label for="s-name">Name</label><input id="s-name" name="name" type="text" autocomplete="name" required></div>
+            </div>
+            <div class="form__row"><label for="s-phone">Phone</label><input id="s-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></div>
+            <p class="form__error" data-send-error role="alert" hidden></p>
+            <button class="btn btn--ink btn--block" type="submit">Send to the counter</button>
+            <p class="form__fine">Demo only. <span class="ph">[Notice period required – owner to confirm]</span></p>
+            <div class="form__done" data-send-done role="status" hidden></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Friday night -->
+    <section class="sec friday" id="friday" aria-labelledby="friday-title">
+      <div class="wrap friday__grid">
+        <figure>
+          <img src="../images/hero.jpg" width="1200" height="896" alt="Illustrative image of an antipasto board with cured meats and cheese" loading="lazy">
+          <figcaption class="illus">Illustrative image – not Borrelli's own photography.</figcaption>
+        </figure>
+        <div class="ticket">
+          <p class="ticket__kicker">Ogni venerdì · Every Friday</p>
+          <h2 class="ticket__title" id="friday-title">Piatto Di Antipasto Night</h2>
+          <p class="ticket__date">Next one: <b data-next-friday></b></p>
+          <p><span class="ph">[Friday evening sitting times – owner to confirm]</span></p>
+          <p><span class="ph">[Price per head / platter – owner to confirm]</span></p>
+          <a class="btn btn--hi" href="tel:01642791888">Call to book · 01642 791888</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hampers + recipe cards -->
+    <section class="sec hampers" id="hampers" aria-labelledby="hampers-title">
+      <div class="wrap">
+        <div class="hampers__grid">
+          <div>
+            <p class="eyebrow">Regali · Gifts</p>
+            <h2 class="section-title" id="hampers-title">Christmas hampers</h2>
+            <p class="deadline"><b data-xmas-days>0</b> days until Christmas</p>
+            <p><span class="ph">[Christmas order-by date – owner to confirm]</span> <span class="ph">[Hamper sizes &amp; prices – owner to confirm]</span></p>
+          </div>
+          <figure>
+            <img src="../images/feature.jpg" width="1200" height="896" alt="Illustrative image of a wicker gift hamper" loading="lazy">
+            <figcaption class="illus">Illustrative image – not Borrelli's own photography.</figcaption>
+          </figure>
+        </div>
+
+        <h3 class="cards__title">What to do with it</h3>
+        <ul class="cards">
+          <li><span class="cards__n">Ricetta 1</span><span class="ph">[Recipe card for a pantry product – owner to supply]</span></li>
+          <li><span class="cards__n">Ricetta 2</span><span class="ph">[Recipe card for a pantry product – owner to supply]</span></li>
+          <li><span class="cards__n">Ricetta 3</span><span class="ph">[Recipe card for a pantry product – owner to supply]</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec visit" id="visit" aria-labelledby="visit-title">
+      <div class="wrap">
+        <h2 class="section-title" id="visit-title">Down the cobbles of Danby Wynd.</h2>
+        <address>3 Danby Wynd, Yarm TS15 9SF · <a href="tel:01642791888">01642 791888</a></address>
+        <p><span class="ph">[Daytime &amp; Friday Antipasto Night hours – owner to confirm]</span></p>
+        <p><span class="ph">[Google review rating – owner to confirm current figure]</span></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <p class="foot__links">
+        <a href="../index.html">Concept A</a>
+        <a href="../b/index.html">Concept B</a>
+        <a href="../c/index.html">Concept C</a>
+        <a href="index.html" aria-current="page">Concept D</a>
+      </p>
+      <p><strong>Concept disclaimer:</strong> Concept design by Mark Aszkenasy – not the official website of Borrelli Delicatessen. All bracketed items are placeholders awaiting owner confirmation. Counter items on the board builder are illustrative, not the shop&#x27;s confirmed range. No forms transmit data and no cookies are set.</p>
+      <p><strong>Illustrative image credit:</strong> Photographs shown on this concept page are AI-generated illustrative images used solely to demonstrate visual layout and do not depict the actual business, its work, products or premises.</p>
+    </div>
+  </footer>
+
+  <nav class="dock" aria-label="Quick actions"><a href="tel:01642791888">Call</a><a href="#friday">Friday</a><a class="dock__primary" href="#board">Build a board</a></nav>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
