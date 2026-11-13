@@ -1777,3 +1777,8 @@ textarea.form-control {
     justify-content: center;
   }
 }
+
+/* === Android Chrome / Samsung Internet & 360px Polish === */
+a, button, summary, label, input, select {
+  -webkit-tap-highlight-color: transparent;
+}
