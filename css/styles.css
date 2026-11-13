@@ -498,6 +498,7 @@ a:hover {
     border-radius: var(--radius-pill);
     background-color: var(--counter-sheet);
     border: 1px solid var(--rule-kraft);
+    white-space: nowrap;
   }
   .site-nav__link:hover {
     background-color: var(--butcher-kraft);
@@ -515,6 +516,40 @@ a:hover {
     padding: 0.46rem 0.95rem;
     font-size: 0.83rem;
     white-space: nowrap;
+  }
+}
+
+@media (min-width: 960px) and (max-width: 1200px) {
+  .shopfront-fascia {
+    gap: 0.55rem;
+  }
+  .shop-brand__seal {
+    width: 2.45rem;
+    height: 2.45rem;
+  }
+  .shop-brand__title {
+    font-size: 1.22rem;
+  }
+  .shop-brand__wynd {
+    font-size: 0.75rem;
+  }
+  .site-nav {
+    gap: 0.42rem;
+  }
+  .site-nav__list {
+    gap: 0.28rem;
+  }
+  .site-nav__link {
+    padding: 0.42rem 0.62rem;
+    font-size: 0.77rem;
+  }
+  .call-badge {
+    padding: 0.42rem 0.75rem;
+    font-size: 0.77rem;
+  }
+  .wynd-stamp {
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
   }
 }
 
