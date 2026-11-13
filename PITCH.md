@@ -71,3 +71,23 @@ Every bracketed `.ph` item across `index.html`, `menu-deli.html`, and `orders-bo
   - [ ] Confirm preferred inbox / phone notification workflow for Friday table bookings and hamper pre-orders
 - [ ] **Photography Swap:**
   - [ ] Replace `images/hero.jpg` and `images/feature.jpg` (AI-generated illustrative concept visuals) with real photos of Borrelli's Danby Wynd shopfront, salumeria counter, Piatto di Antipasto platters, and gift hampers.
+
+---
+
+## Set D — Build Your Board (`/d/`)
+
+- **Live Concept URL:** https://tedotedo.github.io/borrelli-demo/d/
+- **What it is:** Italian tin-label styling and a board builder: tap salumi, cheese and antipasti onto a wooden board, then send it to the counter.
+- **Reach it from any page:** tap **D** in the Concept switcher in the top banner.
+
+### 3-Tap Phone Demo (Set D)
+1. Tap **Start your board**, then tap five or six items: each drops onto the board and the tally changes from "A board for two" to "A board for four".
+2. Pick a collection date, add a name and tap **Send to the counter**.
+3. Scroll to the **Piatto Di Antipasto Night** ticket showing the next Friday.
+
+### One-Line Pitch
+> *"Customers build the board on their phone, and you get a tidy list instead of a phone call at lunchtime."*
+
+### Know Before You Show
+- The twelve counter items are generic categories for illustration, not the confirmed range, and no prices are shown. The Google rating is left as a placeholder until re-checked.
+- Demo only: no form sends anything, and unknown details stay as bracketed `[...]` placeholders for the owner to confirm.

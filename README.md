@@ -27,3 +27,9 @@ Then open `http://localhost:8082` in a browser.
 - Every HTML page includes `<meta name="robots" content="noindex, nofollow">`.
 - Zero external network requests (all fonts, styles, scripts, and SVGs are self-hosted locally).
 - Zero fabricated dishes, prices, reviews, staff names, or awards; unknown details are styled in `.ph` tags for owner confirmation.
+
+## Set D — Build Your Board
+
+- `d/index.html`, `d/css/styles.css`, `d/js/app.js` — Italian tin-label styling and a board builder: tap salumi, cheese and antipasti onto a wooden board, then send it to the counter.
+- Live at https://tedotedo.github.io/borrelli-demo/d/. Reuses the root `fonts/` and `images/`; same `noindex`, zero external requests and `.ph` placeholder rules as Sets A–C.
+- The twelve counter items are generic categories for illustration, not the confirmed range, and no prices are shown. The Google rating is left as a placeholder until re-checked.
